@@ -266,6 +266,9 @@ MonoBehaviour:
   spawnableGO: {fileID: 8236250912489383769, guid: ddbe8cb975c7a3a46883cc32a297bb65,
     type: 3}
   gameMasterCamera: {fileID: 963194227}
+  rayMask:
+    serializedVersion: 2
+    m_Bits: 1
 --- !u!1 &431504375
 GameObject:
   m_ObjectHideFlags: 0

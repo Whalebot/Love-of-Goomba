@@ -8,6 +8,7 @@ public class ObjectSpawner : MonoBehaviour
     public bool mousePressed = false;
     public GameObject spawnableGO;
     public Camera gameMasterCamera;
+    [SerializeField] private LayerMask rayMask;
     Vector2 mousePos = new Vector2();
     Event currentEvent;
     bool spawnedOnce = false;
@@ -35,7 +36,7 @@ public class ObjectSpawner : MonoBehaviour
     void PositionSpawnableGO(GameObject spawnedGO){
         if(spawnedOnce == true){
             
-            Physics.Raycast(gameMasterCamera.transform.position, gameMasterCamera.ScreenPointToRay(Input.mousePosition).direction, out hit, Mathf.Infinity);
+            Physics.Raycast(gameMasterCamera.transform.position, gameMasterCamera.ScreenPointToRay(Input.mousePosition).direction, out hit, Mathf.Infinity, rayMask);
             if(hit.point == new Vector3(0,0,0)){
                 thisInstanceOfSpawnableGO.transform.position = gameMasterCamera.WorldToScreenPoint(Input.mousePosition);
             }
@@ -44,6 +45,7 @@ public class ObjectSpawner : MonoBehaviour
             }
             
             if(Input.GetMouseButtonDown(0) && spawnedOnce && placementIsValid){
+                ActivateAI();
                 spawnedOnce = false;
             }
             Debug.DrawRay(gameMasterCamera.transform.position, gameMasterCamera.ScreenPointToRay(Input.mousePosition).direction*100, Color.white, 0f, true);
@@ -65,5 +67,10 @@ public class ObjectSpawner : MonoBehaviour
                 placementIsValid = false;
             }
         }
+    }
+
+    void ActivateAI() {
+        thisInstanceOfSpawnableGO.GetComponent<AI>().Activate();
+
     }
 }

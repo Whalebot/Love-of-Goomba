@@ -31,7 +31,7 @@ public class Enemy : MonoBehaviour
     void ShootDetection()
     {
         Debug.DrawLine(transform.position, transform.position + transform.forward * range, Color.blue);
-        if (Physics.Raycast(transform.position, transform.forward, out hit, range, mask))
+        if (Physics.Raycast(transform.position, transform.forward, out hit, range, mask) && hit.collider.gameObject.CompareTag("Player"))
         {
             if (Time.time > shootDelay + lastShot)
             {
