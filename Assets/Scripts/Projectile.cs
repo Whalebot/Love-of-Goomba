@@ -7,7 +7,10 @@ public class Projectile : MonoBehaviour
     [SerializeField] bool homing;
     [SerializeField] float velocity;
     [SerializeField] int damage;
+    [SerializeField] int hitStun;
+    [SerializeField] float pushback;
     [SerializeField] GameObject hitParticle;
+    [SerializeField] LayerMask mask;
     Collider col;
     Rigidbody rb;
 
@@ -25,6 +28,14 @@ public class Projectile : MonoBehaviour
 
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        // print(other.gameObject);
+        if (other.CompareTag("Player")) { DoDamage(other.gameObject); }
+        Instantiate(hitParticle, transform.position, Quaternion.identity);
+        Destroy(gameObject);
+    }
+    /*
     private void OnCollisionEnter(Collision collision)
     {
         ContactPoint contact = collision.contacts[0];
@@ -33,8 +44,13 @@ public class Projectile : MonoBehaviour
         Instantiate(hitParticle, pos, rot);
         Destroy(gameObject);
     }
+    */
 
-    void DoDamage() {
-
+    void DoDamage(GameObject other)
+    {
+        Status status = other.GetComponent<Status>();
+        status.Health -= damage;
+        status.TakePushback(transform.forward * pushback);
+        status.HitStun = hitStun;
     }
 }

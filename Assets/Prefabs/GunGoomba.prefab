@@ -164,6 +164,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 50
+  hitStun: 0
 --- !u!114 &1321379920309192474
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -184,7 +185,7 @@ MonoBehaviour:
   mask:
     serializedVersion: 2
     m_Bits: 1025
-  shootDelay: 0.1
+  shootDelay: 1
   lastShot: 0
 --- !u!114 &131321327250381244
 MonoBehaviour:
