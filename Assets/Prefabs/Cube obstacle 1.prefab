@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4098579371920729373}
   - component: {fileID: -7863832889790274659}
   - component: {fileID: 6667173996420338711}
-  m_Layer: 11
+  m_Layer: 10
   m_Name: Cube obstacle 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
