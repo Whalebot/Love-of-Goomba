@@ -25,6 +25,7 @@ public class AI : MonoBehaviour
     }
 
     public void Activate() {
+
         isActive = true;
         agent.enabled = true;
     }
