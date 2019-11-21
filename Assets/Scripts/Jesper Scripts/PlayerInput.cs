@@ -21,7 +21,6 @@ public class PlayerInput : MonoBehaviour
         Vertical = Input.GetAxis("Vertical");
         Horizontal = Input.GetAxis("Horizontal");
         LookInput = new Vector2(Input.GetAxis("Horizontal2"), Input.GetAxis("Vertical2"));
-        print(LookInput);
         //LookInput = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
     }
 }

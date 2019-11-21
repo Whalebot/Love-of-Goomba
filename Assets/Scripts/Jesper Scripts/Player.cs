@@ -46,5 +46,20 @@ public class Player : MonoBehaviour
         lookInput.x = Mathf.Lerp(lookInput.x, playerInput.LookInput.x, 1f / StickControl.Damping.x);
         transform.Rotate(Vector3.up * lookInput.x * StickControl.Sensitivity.x);
 
+        if (Input.GetButtonDown("Submit"))
+        {
+            if(playerInput.Horizontal > 0.5f)
+            {
+                GetComponentInChildren<Animator>().SetTrigger("FlipRight");
+                return;
+            }
+            if (playerInput.Horizontal < -0.5f)
+            {
+                GetComponentInChildren<Animator>().SetTrigger("FlipLeft");
+                return;
+            }
+                GetComponentInChildren<Animator>().SetTrigger("ForwardRoll");
+        }
+
     }
 }
