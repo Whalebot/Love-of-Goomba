@@ -16,6 +16,9 @@ public class CheckForValidPlacement : MonoBehaviour
         if(other.gameObject.tag == "ValidPlacementTag"){
             playerInBounds = true;
         }
+        if(other.gameObject.tag !="ValidPlacementTag"){
+            playerInBounds = false;
+        }
     }
     
     void OnTriggerExit(Collider other){

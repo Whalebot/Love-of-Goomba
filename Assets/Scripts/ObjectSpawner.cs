@@ -2,28 +2,41 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class ObjectSpawner : MonoBehaviour
-{
-    public bool mousePressed = false;
-    public GameObject spawnableGO;
+{    public GameObject spawnableGO;
+
     public Camera gameMasterCamera;
     [SerializeField] private LayerMask rayMask;
     Vector2 mousePos = new Vector2();
     Event currentEvent;
-    bool spawnedOnce = false;
-    private GameObject thisInstanceOfSpawnableGO;
+    public static bool spawnedOnce;
+    public static GameObject thisInstanceOfSpawnableGO;
     bool placementIsValid = false;
+    GameObject cancelSpawning;
+    Animator cancelSpawningAnimator;
     RaycastHit hit;
+    GameMasterPointsMechanic PointsMechanic;
+
     void Start()
     {
+        spawnedOnce = false;
+        cancelSpawning = FindObjectOfType<CancelSpawning>().gameObject;
+        cancelSpawningAnimator = cancelSpawning.GetComponent<Animator>();
+        PointsMechanic = FindObjectOfType<GameMasterPointsMechanic>();
+        
     }
 
     public void spawnObject()
     {
         if (!spawnedOnce)
         {
+            cancelSpawning.gameObject.GetComponent<Button>().interactable = true;
+            cancelSpawning.gameObject.SetActive(true);
+            cancelSpawningAnimator.SetBool("ShowCancelSpawningButton", true);
             thisInstanceOfSpawnableGO = Instantiate(spawnableGO, gameMasterCamera.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, 0)), Quaternion.identity);
+            PointsMechanic.substractPoints(thisInstanceOfSpawnableGO);
             spawnedOnce = true;
         }
     }
@@ -41,7 +54,9 @@ public class ObjectSpawner : MonoBehaviour
     {
         if (spawnedOnce == true)
         {
-
+            foreach(GameObject spawnerButton in GameMasterPointsMechanic.spawnerButtons){
+                spawnerButton.GetComponent<Button>().interactable = false;
+            }
             Physics.Raycast(gameMasterCamera.transform.position, gameMasterCamera.ScreenPointToRay(Input.mousePosition).direction, out hit, Mathf.Infinity, rayMask);
             if (hit.point == new Vector3(0, 0, 0))
             {
@@ -55,7 +70,12 @@ public class ObjectSpawner : MonoBehaviour
             if (Input.GetMouseButtonDown(0) && spawnedOnce && placementIsValid)
             {
                 ActivateAI();
-                spawnedOnce = false;
+                spawnedOnce = false;     
+                foreach(GameObject spawnerButton in GameMasterPointsMechanic.spawnerButtons){
+                    spawnerButton.GetComponent<Button>().interactable = true;
+                }
+                cancelSpawning.gameObject.GetComponent<Button>().interactable = false;
+                cancelSpawningAnimator.SetBool("ShowCancelSpawningButton", false);
             }
             Debug.DrawRay(gameMasterCamera.transform.position, gameMasterCamera.ScreenPointToRay(Input.mousePosition).direction * 100, Color.white, 0f, true);
         }
