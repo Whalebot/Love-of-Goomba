@@ -5,15 +5,19 @@ using UnityEngine;
 public class Shooter : MonoBehaviour
 {
     Player player;
+    public float gunFireRate;
     public int gunDamage;
     public int gunHitStun;
     public float gunPushback;
+    public float shottyFireRate;
     public int shottyDamage;
     public int shottyHitStun;
     public float shottyPushback;
     public LayerMask mask;
     public GameObject gunSFX;
     public GameObject shottySFX;
+    public bool canShoot = true;
+    public float cooldown;
     Animator anim;
     Camera cam;
     // Start is called before the first frame update
@@ -27,15 +31,23 @@ public class Shooter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if(cooldown <= 0)
+        {
+            canShoot = true;
+        }
+
         RaycastHit hit;
         Ray ray = cam.ViewportPointToRay(new Vector3(0.5F, 0.5F, 0));
 
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire1") && canShoot == true)
         {
             if(player.activeWeapon == 0)
             {
                 Instantiate(gunSFX, transform.position, Quaternion.identity);
                 anim.SetTrigger("Shoot");
+                canShoot = false;
+                cooldown = gunFireRate;
                 if (Physics.Raycast(ray, out hit, Mathf.Infinity, mask))
                 {
                     if (hit.collider)
@@ -51,6 +63,8 @@ public class Shooter : MonoBehaviour
             {
                 Instantiate(shottySFX, transform.position, Quaternion.identity);
                 anim.SetTrigger("Shoot");
+                canShoot = false;
+                cooldown = shottyFireRate;
                 if (Physics.Raycast(ray, out hit, Mathf.Infinity, mask))
                 {
                     if (hit.collider)
@@ -62,6 +76,14 @@ public class Shooter : MonoBehaviour
                     }
                 }
             }
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        if(cooldown > 0)
+        {
+            cooldown -= 1;
         }
     }
 }

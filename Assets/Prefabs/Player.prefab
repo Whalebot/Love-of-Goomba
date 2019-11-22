@@ -491,9 +491,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6604a434612d45498c40e8df8b76386, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gunFireRate: 0.1
   gunDamage: 10
   gunHitStun: 1
   gunPushback: 5
+  shottyFireRate: 1
   shottyDamage: 20
   shottyHitStun: 5
   shottyPushback: 10
@@ -503,6 +505,7 @@ MonoBehaviour:
   gunSFX: {fileID: 7563755249940215830, guid: f88063bf5eb3acc4e8617f1a2e21645b, type: 3}
   shottySFX: {fileID: 3020567648778785521, guid: 14e2a3d1f1b0b7f4d892a832c23a67e8,
     type: 3}
+  canShoot: 1
 --- !u!95 &1870063257
 Animator:
   serializedVersion: 3
@@ -558,7 +561,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7117268988591033503}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.87, y: 1.33, z: 1.81}
+  m_LocalPosition: {x: 1.51, y: 1.33, z: 1.81}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7117268989387456929}
@@ -695,6 +698,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 10
   hitStun: 0
+  inHitStun: 0
 --- !u!1001 &3633909601454114498
 PrefabInstance:
   m_ObjectHideFlags: 0

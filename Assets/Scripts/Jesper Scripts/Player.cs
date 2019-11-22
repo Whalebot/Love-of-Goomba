@@ -46,6 +46,7 @@ public class Player : MonoBehaviour
     public bool canInput = true;
     public int activeWeapon;
     Animator anim;
+    Shooter shooter;
 
     // Start is called before the first frame update
     void Start()
@@ -54,6 +55,7 @@ public class Player : MonoBehaviour
         PlayerManager.Instance.LocalPlayer = this;
         rb = GetComponent<Rigidbody>();
         anim = GetComponentInChildren<Animator>();
+        shooter = GetComponentInChildren<Shooter>();
     }
 
     // Update is called once per frame
@@ -115,6 +117,7 @@ public class Player : MonoBehaviour
 
     public void Dodge()
     {
+        shooter.cooldown = 0;
         if(anim.GetNextAnimatorStateInfo(0).IsName("Forward Roll"))
         {
             rb.velocity = Vector3.zero;
