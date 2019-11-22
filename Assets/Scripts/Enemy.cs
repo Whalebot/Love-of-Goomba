@@ -7,7 +7,7 @@ public class Enemy : MonoBehaviour
     public bool isRanged;
     [SerializeField] GameObject projectile;
     [SerializeField] Transform shootOrigin;
-    [SerializeField] float range;
+
     [SerializeField] LayerMask mask;
     [SerializeField] float shootDelay;
     [SerializeField] float lastShot;
@@ -24,7 +24,8 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (TargetInRange())
+        print(ai.TargetInRange());
+        if (ai.TargetInRange())
         {
             //ai.state = AI.State.Attack;
             if (isRanged)
@@ -38,8 +39,8 @@ public class Enemy : MonoBehaviour
 
     void ShootDetection()
     {
-        Debug.DrawLine(transform.position, transform.position + transform.forward * range, Color.blue);
-        if (Physics.Raycast(transform.position, transform.forward, out hit, range, mask) && hit.collider.gameObject.CompareTag("Player"))
+        Debug.DrawLine(transform.position, transform.position + ai.TargetDirectionVector() * ai.range, Color.blue);
+        if (Physics.Raycast(transform.position, ai.TargetDirectionVector(), out hit, ai.range, mask) && hit.collider.gameObject.CompareTag("Player"))
         {
             if (Time.time > shootDelay + lastShot)
             {
@@ -49,13 +50,10 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    bool TargetInRange()
-    {
-        return Vector3.Distance(transform.position, ai.target.transform.position) < range;
-    }
+
 
     public void Shoot()
     {
-        Instantiate(projectile, shootOrigin.position, shootOrigin.rotation);
+        Instantiate(projectile, shootOrigin.position, ai.TargetDirection());
     }
 }

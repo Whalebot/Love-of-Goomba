@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 372315511982833852}
   - component: {fileID: 1321379920309192474}
   - component: {fileID: 131321327250381244}
+  - component: {fileID: -8859651721805873869}
   m_Layer: 9
   m_Name: GunGoomba
   m_TagString: Untagged
@@ -113,7 +114,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   isActive: 0
-  state: 0
+  range: 20
+  state: 1
 --- !u!195 &1321379920309192471
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -121,7 +123,7 @@ NavMeshAgent:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1321379920309192466}
-  m_Enabled: 1
+  m_Enabled: 0
   m_AgentTypeID: 0
   m_Radius: 1.5
   m_Speed: 3.5
@@ -183,7 +185,6 @@ MonoBehaviour:
   projectile: {fileID: 1944136812685012702, guid: 35bd4543d60b1ff4e889ff756c089c1f,
     type: 3}
   shootOrigin: {fileID: 1321379920564210505}
-  range: 20
   mask:
     serializedVersion: 2
     m_Bits: 1025
@@ -202,6 +203,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerInBounds: 0
+--- !u!114 &-8859651721805873869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1321379920309192466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c96d11265419a3479ded9f00f56dc81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cost: 5
 --- !u!1 &1321379920564210504
 GameObject:
   m_ObjectHideFlags: 0
@@ -214,7 +228,7 @@ GameObject:
   - component: {fileID: 1321379920564210508}
   - component: {fileID: 1321379920564210507}
   - component: {fileID: 1321379920564210506}
-  m_Layer: 9
+  m_Layer: 12
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}

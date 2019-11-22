@@ -31,9 +31,13 @@ public class Projectile : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         // print(other.gameObject);
-        if (other.CompareTag("Player")) { DoDamage(other.gameObject); }
-        Instantiate(hitParticle, transform.position, Quaternion.identity);
-        Destroy(gameObject);
+       // if (other.gameObject.layer == mask)
+        {
+            if (other.CompareTag("Player")) { DoDamage(other.gameObject); }
+            Instantiate(hitParticle, transform.position, Quaternion.identity);
+            Destroy(gameObject);
+        }
+       
     }
     /*
     private void OnCollisionEnter(Collision collision)

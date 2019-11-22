@@ -6,6 +6,7 @@ public class AI : MonoBehaviour
 {
     public GameObject target;
     public bool isActive;
+    [SerializeField] public float range;
     NavMeshAgent agent;
     Status status;
 
@@ -68,7 +69,24 @@ public class AI : MonoBehaviour
 
     }
 
+    public bool TargetInRange()
+    {
+        return Vector3.Distance(transform.position, target.transform.position) < range;
+    }
 
+    public Quaternion TargetDirection()
+    {
+        Vector3 relativePos = target.transform.position + Vector3.up * AIManager.aimOffset - transform.position;
+        Quaternion rotation = Quaternion.LookRotation(relativePos, Vector3.up);
+
+        return rotation;
+    }
+
+    public Vector3 TargetDirectionVector()
+    {
+        Vector3 relativePos = target.transform.position + Vector3.up * AIManager.aimOffset - transform.position;
+        return relativePos;
+    }
 
     public void Activate() {
 
