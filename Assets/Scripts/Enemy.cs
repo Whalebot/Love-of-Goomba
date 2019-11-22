@@ -24,7 +24,6 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        print(ai.TargetInRange());
         if (ai.TargetInRange())
         {
             //ai.state = AI.State.Attack;
