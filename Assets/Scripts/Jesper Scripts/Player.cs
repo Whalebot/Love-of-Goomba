@@ -6,6 +6,7 @@ public class Player : MonoBehaviour
 {
 
 
+
     [System.Serializable]
     public class StickInput
     {
@@ -43,6 +44,7 @@ public class Player : MonoBehaviour
     Rigidbody rb;
     public bool canMove = true;
     public bool canInput = true;
+    public int activeWeapon;
     Animator anim;
 
     // Start is called before the first frame update
@@ -84,6 +86,20 @@ public class Player : MonoBehaviour
                 return;
             }
                 anim.SetTrigger("ForwardRoll");             
+        }
+
+        if (Input.GetButtonDown("Switch"))
+        {
+            if(activeWeapon == 0)
+            {
+                activeWeapon = 1;
+                anim.SetInteger("ActiveWeapon", 1);
+            }
+            else
+            {
+                activeWeapon = 0;
+                anim.SetInteger("ActiveWeapon", 0);
+            }
         }
 
         if (anim.GetCurrentAnimatorStateInfo(0).IsName("Forward Roll") || anim.GetCurrentAnimatorStateInfo(0).IsName("FlipLeft") || anim.GetCurrentAnimatorStateInfo(0).IsName("FlipRight")
