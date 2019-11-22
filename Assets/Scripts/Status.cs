@@ -6,6 +6,7 @@ public class Status : MonoBehaviour
 {
     public int health;
     public int hitStun;
+    public bool inHitStun;
     Rigidbody rb;
 
     // Start is called before the first frame update
@@ -35,14 +36,13 @@ public class Status : MonoBehaviour
         set { hitStun = value; }
     }
 
-
-
     public void TakePushback(Vector3 direction) {
         rb.AddForce(direction, ForceMode.Impulse);
     }
 
     void ResolveHitStun() {
         if (hitStun > 0) hitStun--;
+        if (HitStun <= 0) inHitStun = false;
     }
 
     void Death() {

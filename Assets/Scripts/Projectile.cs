@@ -18,7 +18,7 @@ public class Projectile : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        col = GetComponent<Collider>();
+       // col = GetComponent<Collider>();
         rb.velocity = transform.forward * velocity;
     }
 

@@ -113,6 +113,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   isActive: 0
+  state: 0
 --- !u!195 &1321379920309192471
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -120,7 +121,7 @@ NavMeshAgent:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1321379920309192466}
-  m_Enabled: 0
+  m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 1.5
   m_Speed: 3.5
@@ -165,6 +166,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 50
   hitStun: 0
+  inHitStun: 0
 --- !u!114 &1321379920309192474
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -212,7 +214,6 @@ GameObject:
   - component: {fileID: 1321379920564210508}
   - component: {fileID: 1321379920564210507}
   - component: {fileID: 1321379920564210506}
-  - component: {fileID: 1321379920564210509}
   m_Layer: 9
   m_Name: Sphere
   m_TagString: Untagged
@@ -293,16 +294,3 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1321379920564210509
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1321379920564210504}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79d47a309a8156c4da64c12161acd8a2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 0

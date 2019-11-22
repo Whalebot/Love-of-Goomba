@@ -12,20 +12,28 @@ public class Enemy : MonoBehaviour
     [SerializeField] float shootDelay;
     [SerializeField] float lastShot;
     RaycastHit hit;
+    AI ai;
+
 
     // Start is called before the first frame update
     void Start()
     {
-
+        ai = GetComponent<AI>();
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (isRanged)
+        if (TargetInRange())
         {
-            ShootDetection();
+            //ai.state = AI.State.Attack;
+            if (isRanged)
+            {
+                ShootDetection();
+            }
         }
+        else { ai.state = AI.State.Move; }
+
     }
 
     void ShootDetection()
@@ -39,6 +47,11 @@ public class Enemy : MonoBehaviour
                 Shoot();
             }
         }
+    }
+
+    bool TargetInRange()
+    {
+        return Vector3.Distance(transform.position, ai.target.transform.position) < range;
     }
 
     public void Shoot()
