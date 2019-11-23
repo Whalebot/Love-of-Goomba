@@ -6,9 +6,18 @@ public class AI : MonoBehaviour
 {
     public GameObject target;
     public bool isActive;
-    [SerializeField] public float range;
+
     NavMeshAgent agent;
     Status status;
+
+    [Space(10)]
+    [HeaderAttribute("Field of View")]
+    [SerializeField] public float range;
+    [Range(0,360)]
+    public float viewAngle;
+    [SerializeField] LayerMask mask;
+    RaycastHit hit;
+   
 
     public enum State { Idle, Move, Attack, Hitstun };
     public State state = State.Move;
@@ -57,16 +66,28 @@ public class AI : MonoBehaviour
         {
             agent.SetDestination(target.transform.position);
         }
+        if(agent.enabled)
+        agent.isStopped = false;
+ 
         if (status.hitStun > 0) state = State.Hitstun;
+
+        if (TargetInRange() && InLineOfSight()) state = State.Attack;
     }
     void Attack()
     {
         if (status.hitStun > 0) state = State.Hitstun;
+        if (agent.enabled)
+            agent.isStopped = true;
 
+
+        if (!TargetInRange() || !InLineOfSight()) state = State.Move;
     }
     void Hitstun()
     {
+        if (agent.enabled)
+            agent.isStopped = true;
 
+        if (status.hitStun <= 0) state = State.Move;
     }
 
     public bool TargetInRange()
@@ -82,10 +103,30 @@ public class AI : MonoBehaviour
         return rotation;
     }
 
+    public bool InLineOfSight() {
+
+        bool clearLine = Physics.Raycast(transform.position, TargetDirectionVector(), out hit, range, mask);
+        Vector3 direction = target.transform.position - transform.position;
+        bool withinAngle = (Vector3.Angle(transform.forward, direction) < viewAngle / 2);
+
+
+        bool seePlayer = clearLine && withinAngle && hit.collider.gameObject.CompareTag("Player");
+
+        Debug.DrawLine(transform.position, hit.point, Color.yellow);
+
+        return seePlayer;
+    }
+
     public Vector3 TargetDirectionVector()
     {
         Vector3 relativePos = target.transform.position + Vector3.up * AIManager.aimOffset - transform.position;
         return relativePos;
+    }
+
+    public Vector3 AngleToVector(float angleInDegrees) {
+        angleInDegrees += transform.eulerAngles.y;
+
+        return new Vector3(Mathf.Sin(angleInDegrees * Mathf.Deg2Rad), 0, Mathf.Cos(angleInDegrees * Mathf.Deg2Rad));
     }
 
     public void Activate() {

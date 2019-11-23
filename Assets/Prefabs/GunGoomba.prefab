@@ -99,6 +99,10 @@ MonoBehaviour:
   target: {fileID: 0}
   isActive: 0
   range: 20
+  viewAngle: 38
+  mask:
+    serializedVersion: 2
+    m_Bits: 1537
   state: 1
 --- !u!195 &1321379920309192471
 NavMeshAgent:
