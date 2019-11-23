@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class SFXDestroy : MonoBehaviour
 {
+
+    public float time;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,7 +21,7 @@ public class SFXDestroy : MonoBehaviour
 
     IEnumerator Destroy()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(time);
         Destroy(gameObject);
     }
 
