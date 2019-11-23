@@ -495,7 +495,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gunFireRate: 1
-  gunDamage: 5
+  gunDamage: 2
   gunDamagelvl2: 0
   gunDamagelvl3: 0
   gunDamagelvl4: 50
@@ -503,7 +503,7 @@ MonoBehaviour:
   gunPushback: 5
   gunPushbacklvl2: 10
   shottyFireRate: 50
-  shottyDamage: 10
+  shottyDamage: 15
   shottyHitStun: 5
   shottyPushback: 15
   shottyRange: 15
