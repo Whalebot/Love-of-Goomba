@@ -22,7 +22,7 @@ public class AI : MonoBehaviour
     public enum State { Idle, Move, Attack, Hitstun };
     public State state = State.Move;
 
-    void Start()
+    void Awake()
     {
         if (target == null) target = GameObject.FindGameObjectWithTag("Player");
         agent = GetComponent<NavMeshAgent>();
@@ -128,6 +128,8 @@ public class AI : MonoBehaviour
 
         return new Vector3(Mathf.Sin(angleInDegrees * Mathf.Deg2Rad), 0, Mathf.Cos(angleInDegrees * Mathf.Deg2Rad));
     }
+
+
 
     public void Activate() {
 

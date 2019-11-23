@@ -9,6 +9,9 @@ public class Status : MonoBehaviour
     public bool inHitStun;
     Rigidbody rb;
 
+    public delegate void OnHealthChangeDelegate(int newVal);
+    public event OnHealthChangeDelegate OnHealthChange;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,31 +24,42 @@ public class Status : MonoBehaviour
         ResolveHitStun();
     }
 
-    public int Health {
-        get {
+    public int Health
+    {
+        get
+        {
             return health;
         }
-        set {
+        set
+        {
+            if (health == value) return;
             health = value;
+            if (OnHealthChange != null)
+                OnHealthChange(health);
+
             if (health <= 0) Death();
         }
     }
 
-    public int HitStun {
+    public int HitStun
+    {
         get { return hitStun; }
         set { hitStun = value; }
     }
 
-    public void TakePushback(Vector3 direction) {
+    public void TakePushback(Vector3 direction)
+    {
         rb.AddForce(direction, ForceMode.Impulse);
     }
 
-    void ResolveHitStun() {
+    void ResolveHitStun()
+    {
         if (hitStun > 0) hitStun--;
         if (HitStun <= 0) inHitStun = false;
     }
 
-    void Death() {
+    void Death()
+    {
         Destroy(gameObject);
     }
 }

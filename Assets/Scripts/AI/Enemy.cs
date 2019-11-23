@@ -11,7 +11,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] LayerMask mask;
     RaycastHit hit;
     [SerializeField] float shootDelay;
-    [SerializeField] float lastShot;
+ float lastShot;
 
     AI ai;
 
