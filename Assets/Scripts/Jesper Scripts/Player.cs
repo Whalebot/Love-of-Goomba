@@ -69,7 +69,7 @@ public class Player : MonoBehaviour
         lookInput.x = Mathf.Lerp(lookInput.x, playerInput.LookInput.x, 1f / StickControl.Damping.x);
         transform.Rotate(Vector3.up * lookInput.x * StickControl.Sensitivity.x);
 
-        if (Input.GetButtonDown("Submit"))
+        if (Input.GetButtonDown("Dodge"))
         {
             if(playerInput.Horizontal > 0.5f)
             {

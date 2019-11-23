@@ -17,6 +17,7 @@ public class Shooter : MonoBehaviour
     public int shottyDamage;
     public int shottyHitStun;
     public float shottyPushback;
+    public float shottyRange;
     public LayerMask mask;
     public GameObject gunSFX;
     public GameObject superGunSFX;
@@ -24,6 +25,7 @@ public class Shooter : MonoBehaviour
     public GameObject smallExplosionFX;
     public GameObject bigExplosionFX;
     public GameObject chargeSFX;
+    public GameObject bloodFX;
     public bool canShoot = true;
     public float cooldown;
     public float gunCharge;
@@ -79,7 +81,8 @@ public class Shooter : MonoBehaviour
                         status.Health -= gunDamagelvl4;
                         status.TakePushback(transform.forward * gunPushback);
                         status.HitStun = gunHitStun;
-                        Instantiate(bigExplosionFX, hit.transform.position, Quaternion.identity);
+                        Instantiate(bigExplosionFX, hit.point, Quaternion.identity);
+                        Instantiate(bloodFX, hit.point, Quaternion.identity);
                     }
                 }
             }
@@ -102,6 +105,7 @@ public class Shooter : MonoBehaviour
                         status.Health -= gunDamage;
                         status.TakePushback(transform.forward * gunPushback);
                         status.HitStun = gunHitStun;
+                        Instantiate(bloodFX, hit.point, Quaternion.identity);
                     }
                 }
             }
@@ -111,7 +115,7 @@ public class Shooter : MonoBehaviour
                 anim.SetTrigger("Shoot");
                 canShoot = false;
                 cooldown = shottyFireRate;
-                if (Physics.Raycast(ray, out hit, Mathf.Infinity, mask))
+                if (Physics.Raycast(ray, out hit, shottyRange, mask))
                 {
                     if (hit.collider)
                     {
@@ -119,6 +123,7 @@ public class Shooter : MonoBehaviour
                         status.Health -= shottyDamage;
                         status.TakePushback(transform.forward * shottyPushback);
                         status.HitStun = shottyHitStun;
+                        Instantiate(bloodFX, hit.point, Quaternion.identity);
                     }
                 }
             }

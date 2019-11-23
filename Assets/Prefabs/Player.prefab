@@ -500,12 +500,13 @@ MonoBehaviour:
   gunDamagelvl3: 0
   gunDamagelvl4: 50
   gunHitStun: 1
-  gunPushback: 10
-  gunPushbacklvl2: 0
+  gunPushback: 5
+  gunPushbacklvl2: 10
   shottyFireRate: 50
   shottyDamage: 10
   shottyHitStun: 5
-  shottyPushback: 10
+  shottyPushback: 15
+  shottyRange: 15
   mask:
     serializedVersion: 2
     m_Bits: 512
@@ -520,6 +521,7 @@ MonoBehaviour:
     type: 3}
   chargeSFX: {fileID: 7460477748255260782, guid: 38fc5e718b6bc0e429ae7b97ee993424,
     type: 3}
+  bloodFX: {fileID: 1000012909287652, guid: abb9f519b142e304d9c45b56afa768bc, type: 3}
   canShoot: 1
   cooldown: 0
   gunCharge: 0
