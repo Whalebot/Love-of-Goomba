@@ -3,11 +3,15 @@ using System.Collections;
 
 public class BillboardCanvas : MonoBehaviour
 {
+    GameObject camcam;
     public Camera m_Camera;
 
     private void Start()
     {
-        m_Camera = GameObject.FindGameObjectWithTag("GMCam").GetComponent<Camera>();
+        camcam = GameObject.FindGameObjectWithTag("GMCam");
+        if (camcam != null)
+    
+            m_Camera = camcam.GetComponent<Camera>();
     }
 
     //Orient the camera after all movement is completed this frame to avoid jittering

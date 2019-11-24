@@ -11,7 +11,7 @@ public class AISpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        lastSpawn = Time.time;
     }
 
     // Update is called once per frame
