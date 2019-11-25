@@ -69,9 +69,10 @@ public class Player : MonoBehaviour
         lookInput.x = Mathf.Lerp(lookInput.x, playerInput.LookInput.x, 1f / StickControl.Damping.x);
         transform.Rotate(Vector3.up * lookInput.x * StickControl.Sensitivity.x);
 
-        if (Input.GetButtonDown("Dodge"))
+        if (Input.GetButtonDown("Dodge") && canInput == true)
         {
-            if(playerInput.Horizontal > 0.5f)
+            canInput = false;
+            if (playerInput.Horizontal > 0.5f)
             {
                 anim.SetTrigger("FlipRight");
                 return;
@@ -102,6 +103,12 @@ public class Player : MonoBehaviour
                 activeWeapon = 0;
                 anim.SetInteger("ActiveWeapon", 0);
             }
+        }
+
+        if (anim.GetCurrentAnimatorStateInfo(0).IsName("Forward Roll") && Input.GetButton("Dodge"))
+        {
+            anim.SetTrigger("ForwardRoll");
+            canInput = false;
         }
 
         if (anim.GetCurrentAnimatorStateInfo(0).IsName("Forward Roll") || anim.GetCurrentAnimatorStateInfo(0).IsName("FlipLeft") || anim.GetCurrentAnimatorStateInfo(0).IsName("FlipRight")
