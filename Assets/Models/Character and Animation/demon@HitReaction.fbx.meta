@@ -485,6 +485,7 @@ ModelImporter:
       position: {x: -0, y: 0.00081841915, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
+
     armTwist: 0.5
     foreArmTwist: 0.5
     upperLegTwist: 0.5
@@ -495,11 +496,13 @@ ModelImporter:
     globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
+
     hasExtraRoot: 1
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: cf5ededb3094e8740bc0e3195cfbe7f5,
     type: 3}
   animationType: 3
+
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
