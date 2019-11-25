@@ -10,6 +10,7 @@ public class AIMelee : MonoBehaviour
     float lastAttack;
     [SerializeField] float startupTime;
     [SerializeField] float duration;
+    [SerializeField] GameObject attackFX;
     AI ai;
 
     // Start is called before the first frame update
@@ -52,6 +53,8 @@ public class AIMelee : MonoBehaviour
     public void Shoot()
     {
         ai.attackID = 1;
+        if(attackFX != null)
+        Instantiate(attackFX, transform.position,transform.rotation);
         ai.attackStart = true;
     }
 
