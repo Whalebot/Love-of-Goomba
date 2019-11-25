@@ -49,6 +49,7 @@ public class Enemy : MonoBehaviour
 
     public void Shoot()
     {
+        ai.attackID = 0;
         ai.attackStart = true;
       //  Instantiate(projectile, shootOrigin.position, ai.TargetDirection(shootOrigin));
     }

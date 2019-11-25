@@ -20,6 +20,7 @@ public class AIAnimator : MonoBehaviour
         anim.SetBool("Hitstun", ai.state == AI.State.Hitstun);
         anim.SetFloat("HitX", ai.status.knockbackDirection.x);
         anim.SetFloat("HitY", ai.status.knockbackDirection.y);
+        anim.SetInteger("AttackID", ai.attackID);
 
         if (ai.status.hitStunStart) HitstunStart();
         if (ai.attackStart) AttackStart();

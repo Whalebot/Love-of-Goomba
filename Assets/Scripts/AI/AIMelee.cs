@@ -24,7 +24,7 @@ public class AIMelee : MonoBehaviour
     {
         if (ai.state == AI.State.Attack)
         {
-                ShootDetection();
+            ShootDetection();
         }
     }
 
@@ -47,12 +47,16 @@ public class AIMelee : MonoBehaviour
     {
         yield return new WaitForSeconds(startupTime);
         Shoot();
-
     }
 
     public void Shoot()
     {
-        print("Goomba attack");
+        ai.attackID = 1;
+        ai.attackStart = true;
+    }
+
+    public void AttackStart(){
+        print("poof");
         ai.status.rb.AddForce(ai.TargetDirectionVector() * force, ForceMode.Impulse);
         hitbox.SetActive(true);
         StartCoroutine("AttackTimer");

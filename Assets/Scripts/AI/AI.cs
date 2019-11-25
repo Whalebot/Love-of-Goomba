@@ -24,6 +24,7 @@ public class AI : MonoBehaviour
     public int income;
     GameManager gm;
 
+    [HideInInspector] public int attackID;
     [HideInInspector] public bool hitstunStart;
     [HideInInspector] public bool attackStart;
 
@@ -175,7 +176,6 @@ public class AI : MonoBehaviour
 
     void ManualRotation()
     {
-        print("Rotating");
         Quaternion lookRotation = Quaternion.LookRotation(TargetDirectionVector());
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, rotationSpeed);
     }
