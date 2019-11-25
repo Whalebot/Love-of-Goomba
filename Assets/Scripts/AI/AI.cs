@@ -21,7 +21,8 @@ public class AI : MonoBehaviour
     [Space(10)]
     [HeaderAttribute("Ground detection")]
     [SerializeField] float groundDistance;
-
+    public int income;
+    GameManager gm;
 
     public enum State { Idle, Move, Attack, Hitstun };
     public State state = State.Move;
@@ -31,10 +32,11 @@ public class AI : MonoBehaviour
         if (target == null) target = GameObject.FindGameObjectWithTag("Player");
         agent = GetComponent<NavMeshAgent>();
         status = GetComponent<Status>();
+       
     }
-    void Update()
+    void Start()
     {
-
+        gm = GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>();
     }
 
     void FixedUpdate()
@@ -166,6 +168,7 @@ public class AI : MonoBehaviour
 
         isActive = true;
         agent.enabled = true;
+        gm.income += income;
     }
 }
 

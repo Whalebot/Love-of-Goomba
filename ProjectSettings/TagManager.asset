@@ -7,6 +7,7 @@ TagManager:
   - ValidPlacementTag
   - SpawnerButton
   - GMCam
+  - Manager
   layers:
   - Default
   - TransparentFX

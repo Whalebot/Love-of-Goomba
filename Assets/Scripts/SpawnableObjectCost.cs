@@ -4,5 +4,8 @@ using UnityEngine;
 
 public class SpawnableObjectCost : MonoBehaviour
 {
- public int cost;
+    public int cost;
+    public int income;
+
+  
 }

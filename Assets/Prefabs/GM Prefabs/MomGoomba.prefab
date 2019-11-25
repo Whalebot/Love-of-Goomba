@@ -125,7 +125,7 @@ Transform:
   m_GameObject: {fileID: 1142523715720990102}
   m_LocalRotation: {x: 0, y: 0.81465244, z: -0, w: -0.5799495}
   m_LocalPosition: {x: -6.18, y: 1, z: 8.7}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 7404771898241191754}
   - {fileID: 685937124003047877}
@@ -168,6 +168,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1537
   groundDistance: 1
+  income: 1
   state: 1
 --- !u!195 &1142523715720990099
 NavMeshAgent:
@@ -249,6 +250,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cost: 5
+  income: 0
 --- !u!114 &8724255965168741284
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -264,7 +266,7 @@ MonoBehaviour:
   spawnPrefab: {fileID: 7973385644284492376, guid: 29b43e2771610f14fbe2c37df11974e1,
     type: 3}
   spawnLocation: {fileID: 526933742720526903}
-  spawnDelay: 5
+  spawnDelay: 25
 --- !u!1 &1142523715986063820
 GameObject:
   m_ObjectHideFlags: 0
@@ -519,11 +521,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1142523715720990098}
     m_Modifications:
-    - target: {fileID: 8470058482264825131, guid: bf3816d63b1f03b4690185e8972f6c90,
-        type: 3}
-      propertyPath: m_Name
-      value: Health Bar
-      objectReference: {fileID: 0}
     - target: {fileID: 8470058482264825128, guid: bf3816d63b1f03b4690185e8972f6c90,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -628,6 +625,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8470058482264825131, guid: bf3816d63b1f03b4690185e8972f6c90,
+        type: 3}
+      propertyPath: m_Name
+      value: Health Bar
       objectReference: {fileID: 0}
     - target: {fileID: 8470058483013100120, guid: bf3816d63b1f03b4690185e8972f6c90,
         type: 3}
