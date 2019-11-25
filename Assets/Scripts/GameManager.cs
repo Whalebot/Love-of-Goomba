@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public static bool gameOver;
     public GameObject GMBase;
     public int GMMoney;
     public int income;
@@ -18,5 +19,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         timeCounter = Time.time;
+
+        if (GMBase == null) gameOver = true;
     }
 }

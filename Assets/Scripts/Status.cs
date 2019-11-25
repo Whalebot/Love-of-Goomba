@@ -7,7 +7,7 @@ public class Status : MonoBehaviour
     public int health;
     public int hitStun;
     public bool inHitStun;
-    Rigidbody rb;
+    [HideInInspector] public Rigidbody rb;
 
     public delegate void OnHealthChangeDelegate(int newVal);
     public event OnHealthChangeDelegate OnHealthChange;
@@ -54,7 +54,11 @@ public class Status : MonoBehaviour
 
     void ResolveHitStun()
     {
-        if (hitStun > 0) hitStun--;
+        if (hitStun > 0)
+        {
+            hitStun--;
+            inHitStun = true;
+        }
         if (HitStun <= 0) inHitStun = false;
     }
 

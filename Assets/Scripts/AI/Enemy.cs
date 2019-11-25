@@ -11,7 +11,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] LayerMask mask;
     RaycastHit hit;
     [SerializeField] float shootDelay;
- float lastShot;
+    float lastShot;
 
     AI ai;
 
@@ -20,6 +20,7 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         ai = GetComponent<AI>();
+        lastShot = Time.time;
     }
 
     // Update is called once per frame
@@ -36,14 +37,11 @@ public class Enemy : MonoBehaviour
 
     void ShootDetection()
     {
-       // Debug.DrawLine(transform.position, transform.position + ai.TargetDirectionVector() * ai.range, Color.blue);
-        // if (Physics.Raycast(transform.position, ai.TargetDirectionVector(), out hit, ai.range, mask) && hit.collider.gameObject.CompareTag("Player"))
+
+        if (Time.time > shootDelay + lastShot)
         {
-            if (Time.time > shootDelay + lastShot)
-            {
-                lastShot = Time.time;
-                Shoot();
-            }
+            lastShot = Time.time;
+            Shoot();
         }
     }
 

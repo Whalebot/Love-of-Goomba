@@ -27,8 +27,10 @@ public class Hitbox : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player")) { DoDamage(other.gameObject); }
-        Instantiate(hitParticle, other.transform.position, Quaternion.identity);
+        if (other.CompareTag("Player")) { DoDamage(other.gameObject);
+            Instantiate(hitParticle, other.transform.position, Quaternion.identity);
+        }
+
     }
 
 

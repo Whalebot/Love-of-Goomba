@@ -99,11 +99,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   isActive: 0
+  status: {fileID: 0}
   range: 20
   viewAngle: 38
+  rotationSpeed: 0.1
   mask:
     serializedVersion: 2
     m_Bits: 1537
+  groundDistance: 0
   state: 1
 --- !u!195 &1321379920309192471
 NavMeshAgent:
@@ -158,6 +161,7 @@ MonoBehaviour:
   health: 25
   hitStun: 0
   inHitStun: 0
+  rb: {fileID: 0}
 --- !u!114 &1321379920309192474
 MonoBehaviour:
   m_ObjectHideFlags: 0

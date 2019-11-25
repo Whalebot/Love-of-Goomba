@@ -275,7 +275,7 @@ PrefabInstance:
     - target: {fileID: 2385531604225607048, guid: 901c02d5919c18646b41041728889e99,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2385531604225607048, guid: 901c02d5919c18646b41041728889e99,
         type: 3}
@@ -617,6 +617,12 @@ PrefabInstance:
       propertyPath: gameMasterCamera
       value: 
       objectReference: {fileID: 391174217}
+    - target: {fileID: 2070664272841418785, guid: 211afcb85e3231c45974545da6f3d0b8,
+        type: 3}
+      propertyPath: spawnableGO
+      value: 
+      objectReference: {fileID: 5569298969719068892, guid: 8bb1c75ed41806e4abd08e2ddd557459,
+        type: 3}
     - target: {fileID: 8948505360448724175, guid: 211afcb85e3231c45974545da6f3d0b8,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -1324,6 +1330,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 12
       objectReference: {fileID: 0}
+    - target: {fileID: 1870063256, guid: 2d0799bfa8e0b1449bc75a1f2e641520, type: 3}
+      propertyPath: gunHitStun
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 1870063256, guid: 2d0799bfa8e0b1449bc75a1f2e641520, type: 3}
+      propertyPath: shottyHitStun
+      value: 60
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2d0799bfa8e0b1449bc75a1f2e641520, type: 3}
 --- !u!1001 &504159600
@@ -1376,7 +1390,7 @@ PrefabInstance:
     - target: {fileID: 4288361064703020356, guid: db2ba05c5a70b884590f8819ad7d77db,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4288361064703020356, guid: db2ba05c5a70b884590f8819ad7d77db,
         type: 3}
@@ -1459,9 +1473,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4a8226ef71f07a48a348bbd6be3f40e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
+  health: 200
   hitStun: 0
   inHitStun: 0
+  rb: {fileID: 0}
 --- !u!4 &643830626
 Transform:
   m_ObjectHideFlags: 0
@@ -1475,7 +1490,7 @@ Transform:
   m_Children:
   - {fileID: 1998193583}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &700325127
 GameObject:
@@ -1938,7 +1953,7 @@ Transform:
   - {fileID: 1031875542}
   - {fileID: 97518606}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &1176923400 stripped
 RectTransform:
@@ -2263,6 +2278,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBar: {fileID: 37380306}
   maxHealth: 0
+  text: {fileID: 1961138091}
 --- !u!1001 &4098579372466703679
 PrefabInstance:
   m_ObjectHideFlags: 0
