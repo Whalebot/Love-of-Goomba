@@ -51,7 +51,7 @@ GameObject:
   - component: {fileID: -8859651721805873869}
   m_Layer: 9
   m_Name: GunGoomba
-  m_TagString: Untagged
+  m_TagString: ValidPlacementTag
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -65,7 +65,7 @@ Transform:
   m_GameObject: {fileID: 1321379920309192466}
   m_LocalRotation: {x: 0, y: 0.81465244, z: -0, w: -0.5799495}
   m_LocalPosition: {x: -0.14, y: 1, z: 8.7}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8885174914888844750}
   - {fileID: 1443829618152514369}

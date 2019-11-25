@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4514461739238185167}
   m_Layer: 2
   m_Name: SpawnableObjectY
-  m_TagString: Untagged
+  m_TagString: ValidPlacementTag
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cost: 50
+  income: 0
 --- !u!114 &9192082272215207203
 MonoBehaviour:
   m_ObjectHideFlags: 0

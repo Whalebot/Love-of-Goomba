@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     public int GMMoney;
     public int income;
     public float incomeTimer;
-    float lastIncome;
+    public float lastIncome;
     [SerializeField] float timeCounter;
     public GameMasterPointsMechanic gmPoint;
     // Start is called before the first frame update

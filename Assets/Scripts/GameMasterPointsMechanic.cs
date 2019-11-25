@@ -19,16 +19,15 @@ public class GameMasterPointsMechanic : MonoBehaviour
     void Update()
     {
         checkForAffordance();
+        pointsDisplay.text = GameMasterPointsForSpawning.ToString();
     }
 
     public void substractPoints(GameObject currentSpawnableObject){
         GameMasterPointsForSpawning -= currentSpawnableObject.GetComponent<SpawnableObjectCost>().cost;
-        pointsDisplay.text = GameMasterPointsForSpawning.ToString();
     }
 
     public void giveBackLostPoints(GameObject currentSpawnableObject){
         GameMasterPointsForSpawning += currentSpawnableObject.GetComponent<SpawnableObjectCost>().cost;
-        pointsDisplay.text = GameMasterPointsForSpawning.ToString();
     }
 
     void checkForAffordance(){

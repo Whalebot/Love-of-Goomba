@@ -25,7 +25,7 @@ public class ObjectSpawner : MonoBehaviour
         cancelSpawning = FindObjectOfType<CancelSpawning>().gameObject;
         cancelSpawningAnimator = cancelSpawning.GetComponent<Animator>();
         PointsMechanic = FindObjectOfType<GameMasterPointsMechanic>();
-        
+        gameMasterCamera = GameObject.FindGameObjectWithTag("GMCam").GetComponent<Camera>();
     }
 
     public void spawnObject()
