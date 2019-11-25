@@ -36,7 +36,8 @@ public class AI : MonoBehaviour
     }
     void Start()
     {
-        gm = GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>();
+        if (gm != null)
+            gm = GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>();
     }
 
     void FixedUpdate()
@@ -168,6 +169,7 @@ public class AI : MonoBehaviour
 
         isActive = true;
         agent.enabled = true;
+        if(gm != null)
         gm.income += income;
     }
 }
