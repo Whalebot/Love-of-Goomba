@@ -7,8 +7,9 @@ public class Status : MonoBehaviour
     public int health;
     public int hitStun;
     public bool inHitStun;
+    [HideInInspector] public bool hitStunStart;
     [HideInInspector] public Rigidbody rb;
-
+    [HideInInspector] public Vector2 knockbackDirection;
     public delegate void OnHealthChangeDelegate(int newVal);
     public event OnHealthChangeDelegate OnHealthChange;
 
@@ -44,12 +45,17 @@ public class Status : MonoBehaviour
     public int HitStun
     {
         get { return hitStun; }
-        set { hitStun = value; }
+        set
+        {
+            hitStun = value;
+            hitStunStart = true;
+        }
     }
 
     public void TakePushback(Vector3 direction)
     {
         rb.AddForce(direction, ForceMode.Impulse);
+        knockbackDirection = (direction - transform.position).normalized;
     }
 
     void ResolveHitStun()
