@@ -24,4 +24,9 @@ public class AnimationHelper : MonoBehaviour
         player.Dodge();
     }
 
+    void CanInput()
+    {
+        player.canInput = true;
+    }
+
 }

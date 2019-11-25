@@ -24,6 +24,10 @@ public class AI : MonoBehaviour
     public int income;
     GameManager gm;
 
+    [HideInInspector] public int attackID;
+    [HideInInspector] public bool hitstunStart;
+    [HideInInspector] public bool attackStart;
+
     public enum State { Idle, Move, Attack, Hitstun };
     public State state = State.Move;
 
@@ -42,8 +46,6 @@ public class AI : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (status.hitStun > 0) state = State.Hitstun;
-
         switch (state)
         {
             case State.Idle:
@@ -82,11 +84,11 @@ public class AI : MonoBehaviour
                 agent.isStopped = false;
         }
 
-        if (status.hitStun > 0) state = State.Hitstun;
+        if (status.hitStun > 0) TransitionToHitstun();
 
-        if (TargetInRange())
+        if (TargetInRange() && !WithinAngle() && ClearLine())
         {
-         //   ManualRotation();
+            ManualRotation();
 
         }
 
@@ -94,7 +96,7 @@ public class AI : MonoBehaviour
     }
     void Attack()
     {
-        if (status.hitStun > 0) state = State.Hitstun;
+        if (status.hitStun > 0) TransitionToHitstun();
         if (agent.enabled)
             agent.isStopped = true;
 
@@ -107,7 +109,12 @@ public class AI : MonoBehaviour
         if (agent.enabled)
             agent.isStopped = true;
 
-        if (status.hitStun <= 0 && CheckForGround()) state = State.Move;
+        if (status.hitStun <= 0 ) state = State.Move;
+    }
+
+    void TransitionToHitstun() {
+        hitstunStart = true;
+        state = State.Hitstun;
     }
 
     public bool TargetInRange()
@@ -122,18 +129,27 @@ public class AI : MonoBehaviour
 
         return rotation;
     }
+    public Quaternion TargetDirection(Transform origin)
+    {
+        Vector3 relativePos = target.transform.position + Vector3.up * AIManager.aimOffset - origin.position;
+        Quaternion rotation = Quaternion.LookRotation(relativePos, Vector3.up);
 
+        return rotation;
+    }
+
+
+    public bool WithinAngle() {
+        bool withinAngle = (Vector3.Angle(transform.forward, TargetDirectionVector()) < viewAngle / 2);
+        return withinAngle;
+    }
+
+    public bool ClearLine() {
+        bool clearLine = Physics.Raycast(transform.position, TargetDirectionVector(), out hit, range, mask) && hit.collider.gameObject.name == ("Player");
+        return clearLine;
+    }
     public bool InLineOfSight()
     {
-
-        bool clearLine = Physics.Raycast(transform.position, TargetDirectionVector(), out hit, range, mask);
-
-        Vector3 direction = target.transform.position - transform.position;
-        bool withinAngle = (Vector3.Angle(transform.forward, direction) < viewAngle / 2);
-
-
-        bool seePlayer = clearLine && withinAngle && hit.collider.gameObject.name == ("Player");
-
+        bool seePlayer = ClearLine()  && WithinAngle() ;
         Debug.DrawLine(transform.position, hit.point, Color.yellow);
 
         return seePlayer;

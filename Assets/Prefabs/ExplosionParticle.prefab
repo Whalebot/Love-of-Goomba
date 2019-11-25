@@ -4939,5 +4939,5 @@ MonoBehaviour:
   - {fileID: 8300000, guid: a31b30c3a4e298544ba7fbd865667cfa, type: 3}
   - {fileID: 8300000, guid: dfefb90ac9b48a347882ab9ad8e6e2ef, type: 3}
   pitchRange: 0.3
-  minVol: 0.6
-  maxVol: 0.8
+  minVol: 1
+  maxVol: 1

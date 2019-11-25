@@ -49,6 +49,10 @@ public class Enemy : MonoBehaviour
 
     public void Shoot()
     {
-        Instantiate(projectile, shootOrigin.position, ai.TargetDirection());
+        ai.attackID = 0;
+        ai.attackStart = true;
+      //  Instantiate(projectile, shootOrigin.position, ai.TargetDirection(shootOrigin));
     }
+
+    public void AttackSpawn() { Instantiate(projectile, shootOrigin.position, ai.TargetDirection(shootOrigin)); }
 }
