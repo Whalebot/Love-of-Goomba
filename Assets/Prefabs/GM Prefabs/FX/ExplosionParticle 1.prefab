@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -7559814891356616307}
   - component: {fileID: 3220091068623565730}
   m_Layer: 0
-  m_Name: ExplosionParticle
+  m_Name: ExplosionParticle 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4848,7 +4848,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
+  MinDistance: 5
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
@@ -4868,7 +4868,7 @@ AudioSource:
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 1
+      time: 0.7288208
       value: 0
       inSlope: 0
       outSlope: 0
