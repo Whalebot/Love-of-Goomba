@@ -26,7 +26,7 @@ public class Player : MonoBehaviour
     [SerializeField] float speed;
     [SerializeField] StickInput StickControl;
     [SerializeField] DodgeForces dodgeForces;
-
+    public float stingerForce;
     MoveController m_MoveController;
     public MoveController MoveController
     {
@@ -71,7 +71,7 @@ public class Player : MonoBehaviour
         lookInput.x = Mathf.Lerp(lookInput.x, playerInput.LookInput.x, 1f / StickControl.Damping.x);
         transform.Rotate(Vector3.up * lookInput.x * StickControl.Sensitivity.x);
 
-        if(Input.GetAxisRaw("Turn") != 0)
+        if(Input.GetAxisRaw("Turn") < 0)
         {
             if(axisInUse == false)
             {
@@ -79,7 +79,15 @@ public class Player : MonoBehaviour
                 axisInUse = true;
             }
         }
-        if(Input.GetAxisRaw("Turn") == 0)
+        if (Input.GetAxisRaw("Turn") > 0 && canInput == true)
+        {
+            if (axisInUse == false && activeWeapon == 1)
+            {
+                anim.SetTrigger("Stinger");
+                axisInUse = true;
+            }
+        }
+        if (Input.GetAxisRaw("Turn") == 0)
         {
             axisInUse = false;
         }
@@ -121,7 +129,7 @@ public class Player : MonoBehaviour
         }
 
         if (anim.GetCurrentAnimatorStateInfo(0).IsName("Forward Roll") || anim.GetCurrentAnimatorStateInfo(0).IsName("FlipLeft") || anim.GetCurrentAnimatorStateInfo(0).IsName("FlipRight")
-             || anim.GetCurrentAnimatorStateInfo(0).IsName("Slide") || anim.GetCurrentAnimatorStateInfo(0).IsName("Backflip"))
+             || anim.GetCurrentAnimatorStateInfo(0).IsName("Slide") || anim.GetCurrentAnimatorStateInfo(0).IsName("Backflip") || anim.GetCurrentAnimatorStateInfo(0).IsName("Stinger"))
         {
             canMove = false;
         }
@@ -166,6 +174,21 @@ public class Player : MonoBehaviour
         {
             anim.SetTrigger("ForwardRoll");
         }
+    }
+    public void Stinger()
+    {
+        if (anim.GetNextAnimatorStateInfo(0).IsName("Stinger"))
+        {
+            canInput = false;
+            shooter.canShoot = false;
+            shooter.cooldown = shooter.shottyFireRate;
+            rb.velocity = Vector3.zero;
+            rb.AddForce(transform.forward * stingerForce);
+        }
+    }
+    public void StopMovement()
+    {
+        rb.velocity = Vector3.zero;
     }
 
 }

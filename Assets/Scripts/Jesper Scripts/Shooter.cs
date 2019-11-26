@@ -26,6 +26,7 @@ public class Shooter : MonoBehaviour
     public GameObject bigExplosionFX;
     public GameObject chargeSFX;
     public GameObject bloodFX;
+    public GameObject stingerHitBox;
     public bool canShoot = true;
     public float cooldown;
     public float gunCharge;
@@ -71,7 +72,6 @@ public class Shooter : MonoBehaviour
                 Instantiate(superGunSFX, transform.position, Quaternion.identity);
                 Instantiate(smallExplosionFX, transform.position, Quaternion.identity);
                 anim.SetTrigger("Shoot");
-                canShoot = false;
                 cooldown = gunFireRate;
                 if (Physics.Raycast(ray, out hit, Mathf.Infinity, mask))
                 {
@@ -139,4 +139,18 @@ public class Shooter : MonoBehaviour
             cooldown -= 1;
         }
     }
+
+    public void StingerShoot()
+    {
+        canShoot = false;
+        cooldown = shottyFireRate;
+        GameObject gunFX = Instantiate(shottySFX, transform.position + transform.forward * 0.7f, transform.rotation);
+        gunFX.transform.parent = gameObject.transform;
+        stingerHitBox.SetActive(true);
+    }
+    public void StingerDisable()
+    {
+        stingerHitBox.SetActive(false);
+    }
+
 }
