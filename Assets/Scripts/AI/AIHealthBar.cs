@@ -21,16 +21,18 @@ public class AIHealthBar : MonoBehaviour
         maxHealth = status.Health;
         barBackground = healthBar.transform.parent.gameObject;
         billboard = GetComponent<BillboardCanvas>();
-       // status.OnHealthChange += UpdateHealth;
-    }
+        // status.OnHealthChange += UpdateHealth;
 
-    private void Update()
-    {
         if (status.health == maxHealth && !GMBase && billboard.owner == BillboardCanvas.Owner.Player)
         {
             barBackground.SetActive(false);
         }
         else barBackground.SetActive(true);
+    }
+
+    private void Update()
+    {
+        if (status.health < maxHealth) { barBackground.SetActive(true); }
 
         if (status.health > 0)
             healthBar.fillAmount =  (float)status.health/(float)maxHealth;

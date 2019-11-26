@@ -11,7 +11,7 @@ public class ObjectSpawner : MonoBehaviour
     public int price;
     public int incomeGain;
 
-   Camera gameMasterCamera;
+    Camera gameMasterCamera;
     [SerializeField] private LayerMask rayMask;
     Vector2 mousePos = new Vector2();
     Event currentEvent;
@@ -22,11 +22,12 @@ public class ObjectSpawner : MonoBehaviour
     Animator cancelSpawningAnimator;
     RaycastHit hit;
 
+    Button thisButton;
+
     void Start()
     {
+        thisButton = GetComponent<Button>();
         spawnedOnce = false;
-        cancelSpawning = FindObjectOfType<CancelSpawning>().gameObject;
-        cancelSpawningAnimator = cancelSpawning.GetComponent<Animator>();
         gameMasterCamera = GameObject.FindGameObjectWithTag("GMCam").GetComponent<Camera>();
     }
 
@@ -34,9 +35,9 @@ public class ObjectSpawner : MonoBehaviour
     {
         if (!spawnedOnce)
         {
-            cancelSpawning.gameObject.GetComponent<Button>().interactable = true;
-            cancelSpawning.gameObject.SetActive(true);
-            cancelSpawningAnimator.SetBool("ShowCancelSpawningButton", true);
+         //   cancelSpawning.gameObject.GetComponent<Button>().interactable = true;
+        //    cancelSpawning.gameObject.SetActive(true);
+       //     cancelSpawningAnimator.SetBool("ShowCancelSpawningButton", true);
             thisInstanceOfSpawnableGO = Instantiate(previewGO, gameMasterCamera.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, 0)), Quaternion.identity);
             spawnedOnce = true;
         }
@@ -48,6 +49,10 @@ public class ObjectSpawner : MonoBehaviour
 
     void Update()
     {
+        if (GameManager.money < price)
+            thisButton.interactable = false;
+        else { thisButton.interactable = true; }
+
         if (thisInstanceOfSpawnableGO != null)
         {
             PositionSpawnableGO(thisInstanceOfSpawnableGO);
@@ -83,18 +88,23 @@ public class ObjectSpawner : MonoBehaviour
                 Destroy(thisInstanceOfSpawnableGO);
                 Pay();
                 spawnedOnce = false;
-                //    foreach (GameObject spawnerButton in GameMasterPointsMechanic.spawnerButtons)
-                {
-                    //      spawnerButton.GetComponent<Button>().interactable = true;
-                }
-                cancelSpawning.gameObject.GetComponent<Button>().interactable = false;
-                cancelSpawningAnimator.SetBool("ShowCancelSpawningButton", false);
+              //  cancelSpawning.gameObject.GetComponent<Button>().interactable = false;
+              //  cancelSpawningAnimator.SetBool("ShowCancelSpawningButton", false);
             }
+            else if (Input.GetMouseButtonDown(0) && spawnedOnce && hit.collider == null)
+            {
+                Destroy(thisInstanceOfSpawnableGO);
+                spawnedOnce = false;
+             //   cancelSpawning.gameObject.GetComponent<Button>().interactable = false;
+             //  cancelSpawningAnimator.SetBool("ShowCancelSpawningButton", false);
+            }
+
             Debug.DrawRay(gameMasterCamera.transform.position, gameMasterCamera.ScreenPointToRay(Input.mousePosition).direction * 100, Color.white, 0f, true);
         }
     }
 
-    void Pay() {
+    void Pay()
+    {
         GameManager.money -= price;
         GameManager.income += incomeGain;
     }
