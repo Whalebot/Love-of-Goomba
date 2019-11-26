@@ -59,7 +59,6 @@ public class AIMelee : MonoBehaviour
     }
 
     public void AttackStart(){
-        print("poof");
         ai.status.rb.AddForce(ai.TargetDirectionVector() * force, ForceMode.Impulse);
         hitbox.SetActive(true);
         StartCoroutine("AttackTimer");

@@ -16,7 +16,7 @@ public class CancelSpawning : MonoBehaviour
     }
     void Update()
     {
-        currentSpawnableObjectInstance = ObjectSpawner.thisInstanceOfSpawnableGO;
+       // currentSpawnableObjectInstance = ObjectSpawner.thisInstanceOfSpawnableGO;
         currentObjectSpawnedOnce = ObjectSpawner.spawnedOnce;
     }
 

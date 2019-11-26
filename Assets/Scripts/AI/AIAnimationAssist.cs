@@ -23,7 +23,6 @@ public class AIAnimationAssist : MonoBehaviour
 
     void MeleeAttack()
     {
-        print(melee);
         if (melee != null)
             melee.AttackStart();
     }

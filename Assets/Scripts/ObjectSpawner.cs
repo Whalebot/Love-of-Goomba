@@ -14,7 +14,7 @@ public class ObjectSpawner : MonoBehaviour
     Vector2 mousePos = new Vector2();
     Event currentEvent;
     public static bool spawnedOnce;
-    public static GameObject thisInstanceOfSpawnableGO;
+    public GameObject thisInstanceOfSpawnableGO;
     bool placementIsValid = false;
     GameObject cancelSpawning;
     Animator cancelSpawningAnimator;
@@ -49,34 +49,43 @@ public class ObjectSpawner : MonoBehaviour
 
     void Update()
     {
-        PositionSpawnableGO(thisInstanceOfSpawnableGO);
-        PlacementIsValidCheck(hit, thisInstanceOfSpawnableGO);
+        if (thisInstanceOfSpawnableGO != null)
+        {
+            PositionSpawnableGO(thisInstanceOfSpawnableGO);
+            PlacementIsValidCheck(hit, thisInstanceOfSpawnableGO);
+        }
+
     }
     void PositionSpawnableGO(GameObject spawnedGO)
     {
         if (spawnedOnce == true)
         {
-            foreach(GameObject spawnerButton in GameMasterPointsMechanic.spawnerButtons){
-                //spawnerButton.GetComponent<Button>().interactable = false;
+            //  foreach (GameObject spawnerButton in GameMasterPointsMechanic.spawnerButtons)
+            {
+                //      spawnerButton.GetComponent<Button>().interactable = false;
             }
             Physics.Raycast(gameMasterCamera.transform.position, gameMasterCamera.ScreenPointToRay(Input.mousePosition).direction, out hit, Mathf.Infinity, rayMask);
             if (hit.point == new Vector3(0, 0, 0))
             {
                 thisInstanceOfSpawnableGO.transform.position = gameMasterCamera.WorldToScreenPoint(Input.mousePosition);
             }
-            else
+            else if (hit.transform != null)
             {
                 thisInstanceOfSpawnableGO.transform.position = hit.point;
+            }
+            else {
+                placementIsValid = false;
             }
 
             if (Input.GetMouseButtonDown(0) && spawnedOnce && placementIsValid)
             {
-                ActivateAI();
+                //ActivateAI();
                 Instantiate(spawnableGO, thisInstanceOfSpawnableGO.transform.position, thisInstanceOfSpawnableGO.transform.rotation);
                 Destroy(thisInstanceOfSpawnableGO);
-                spawnedOnce = false;     
-                foreach(GameObject spawnerButton in GameMasterPointsMechanic.spawnerButtons){
-                    spawnerButton.GetComponent<Button>().interactable = true;
+                spawnedOnce = false;
+                //    foreach (GameObject spawnerButton in GameMasterPointsMechanic.spawnerButtons)
+                {
+                    //      spawnerButton.GetComponent<Button>().interactable = true;
                 }
                 cancelSpawning.gameObject.GetComponent<Button>().interactable = false;
                 cancelSpawningAnimator.SetBool("ShowCancelSpawningButton", false);
@@ -93,7 +102,7 @@ public class ObjectSpawner : MonoBehaviour
             {
                 foreach (MeshRenderer mr in spawnedGOCheckForPlacement.GetComponentsInChildren<MeshRenderer>())
                 {
-                    mr.GetComponent<MeshRenderer>().material.color = new Color(0.6320754f, 0.6320754f, 0.6320754f);
+                    mr.GetComponent<MeshRenderer>().material.color = Color.yellow;
                 }
                 placementIsValid = true;
             }
