@@ -5,7 +5,9 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class ObjectSpawner : MonoBehaviour
-{    public GameObject spawnableGO;
+{
+    public GameObject previewGO;
+    public GameObject spawnableGO;
 
     public Camera gameMasterCamera;
     [SerializeField] private LayerMask rayMask;
@@ -35,7 +37,7 @@ public class ObjectSpawner : MonoBehaviour
             cancelSpawning.gameObject.GetComponent<Button>().interactable = true;
             cancelSpawning.gameObject.SetActive(true);
             cancelSpawningAnimator.SetBool("ShowCancelSpawningButton", true);
-            thisInstanceOfSpawnableGO = Instantiate(spawnableGO, gameMasterCamera.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, 0)), Quaternion.identity);
+            thisInstanceOfSpawnableGO = Instantiate(previewGO, gameMasterCamera.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, 0)), Quaternion.identity);
             PointsMechanic.substractPoints(thisInstanceOfSpawnableGO);
             spawnedOnce = true;
         }
@@ -55,7 +57,7 @@ public class ObjectSpawner : MonoBehaviour
         if (spawnedOnce == true)
         {
             foreach(GameObject spawnerButton in GameMasterPointsMechanic.spawnerButtons){
-                spawnerButton.GetComponent<Button>().interactable = false;
+                //spawnerButton.GetComponent<Button>().interactable = false;
             }
             Physics.Raycast(gameMasterCamera.transform.position, gameMasterCamera.ScreenPointToRay(Input.mousePosition).direction, out hit, Mathf.Infinity, rayMask);
             if (hit.point == new Vector3(0, 0, 0))
@@ -70,6 +72,8 @@ public class ObjectSpawner : MonoBehaviour
             if (Input.GetMouseButtonDown(0) && spawnedOnce && placementIsValid)
             {
                 ActivateAI();
+                Instantiate(spawnableGO, thisInstanceOfSpawnableGO.transform.position, thisInstanceOfSpawnableGO.transform.rotation);
+                Destroy(thisInstanceOfSpawnableGO);
                 spawnedOnce = false;     
                 foreach(GameObject spawnerButton in GameMasterPointsMechanic.spawnerButtons){
                     spawnerButton.GetComponent<Button>().interactable = true;
