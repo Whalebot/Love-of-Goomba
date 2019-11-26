@@ -293,11 +293,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GMBase: {fileID: 0}
   GMMoney: 0
-  income: 0
+  GMIncome: 0
   incomeTimer: 10
   lastIncome: 0
+  mana: 0
+  moneyText: {fileID: 0}
+  incomeText: {fileID: 0}
+  manaText: {fileID: 0}
   timeCounter: 0
-  gmPoint: {fileID: 0}
 --- !u!4 &116884986
 Transform:
   m_ObjectHideFlags: 0
@@ -324,6 +327,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Speed Demon Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 4218069879181996037, guid: 9651541e0ffb1834daa3ad3ce9929e7d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4218069879181996033, guid: 9651541e0ffb1834daa3ad3ce9929e7d,
         type: 3}
@@ -975,6 +983,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Gun Demon Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 59359735182200207, guid: 680d6424247503d41a313fe9368352e4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 59359735182200203, guid: 680d6424247503d41a313fe9368352e4,
         type: 3}

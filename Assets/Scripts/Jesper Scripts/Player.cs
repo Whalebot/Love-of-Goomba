@@ -45,6 +45,7 @@ public class Player : MonoBehaviour
     public bool canMove = true;
     public bool canInput = true;
     public int activeWeapon;
+    public GameObject weaponSwitchFX;
     Animator anim;
     Shooter shooter;
     bool axisInUse;
@@ -116,6 +117,7 @@ public class Player : MonoBehaviour
 
         if (Input.GetButtonDown("Switch"))
         {
+            Instantiate(weaponSwitchFX, transform.position, Quaternion.identity);
             if(activeWeapon == 0)
             {
                 activeWeapon = 1;
