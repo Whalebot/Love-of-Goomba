@@ -44,9 +44,17 @@ public class AnimationHelper : MonoBehaviour
     {
         shooter.StingerShoot();
     }
-    void StingerDisable()
+    void Backslide()
     {
-        shooter.StingerDisable();
+        player.Backslide();
+    }
+    void BackslideShoot()
+    {
+        shooter.BackslideShoot();
+    }
+    void HitBoxDisable()
+    {
+        shooter.HitboxDisable();
     }
 
     void CantMove()

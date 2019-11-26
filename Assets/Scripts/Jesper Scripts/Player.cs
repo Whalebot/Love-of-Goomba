@@ -80,9 +80,14 @@ public class Player : MonoBehaviour
                 axisInUse = true;
             }
         }
-        if (Input.GetAxisRaw("Turn") > 0 && canInput == true)
+        if (Input.GetAxisRaw("Turn") > 0 && canInput == true && activeWeapon == 1 && axisInUse == false)
         {
-            if (axisInUse == false && activeWeapon == 1)
+            if ( playerInput.Vertical < -0.5f)
+            {
+                anim.SetTrigger("Backslide");
+                axisInUse = true;
+            }
+            else
             {
                 anim.SetTrigger("Stinger");
                 axisInUse = true;
@@ -131,7 +136,8 @@ public class Player : MonoBehaviour
         }
 
         if (anim.GetCurrentAnimatorStateInfo(0).IsName("Forward Roll") || anim.GetCurrentAnimatorStateInfo(0).IsName("FlipLeft") || anim.GetCurrentAnimatorStateInfo(0).IsName("FlipRight")
-             || anim.GetCurrentAnimatorStateInfo(0).IsName("Slide") || anim.GetCurrentAnimatorStateInfo(0).IsName("Backflip") || anim.GetCurrentAnimatorStateInfo(0).IsName("Stinger"))
+             || anim.GetCurrentAnimatorStateInfo(0).IsName("Slide") || anim.GetCurrentAnimatorStateInfo(0).IsName("Backflip") || anim.GetCurrentAnimatorStateInfo(0).IsName("Stinger")
+             || anim.GetCurrentAnimatorStateInfo(0).IsName("Backslide"))
         {
             canMove = false;
         }
@@ -186,6 +192,16 @@ public class Player : MonoBehaviour
             shooter.cooldown = shooter.shottyFireRate;
             rb.velocity = Vector3.zero;
             rb.AddForce(transform.forward * stingerForce);
+        }
+    }
+    public void Backslide()
+    {
+        if (anim.GetNextAnimatorStateInfo(0).IsName("Backslide"))
+        {
+            canInput = false;
+            shooter.canShoot = false;
+            shooter.cooldown = shooter.shottyFireRate;
+            rb.velocity = Vector3.zero;
         }
     }
     public void StopMovement()
