@@ -8,29 +8,29 @@ public class ObjectSpawner : MonoBehaviour
 {
     public GameObject previewGO;
     public GameObject spawnableGO;
+    public int price;
+    public int incomeGain;
 
-    public Camera gameMasterCamera;
+   Camera gameMasterCamera;
     [SerializeField] private LayerMask rayMask;
     Vector2 mousePos = new Vector2();
     Event currentEvent;
     public static bool spawnedOnce;
-    public GameObject thisInstanceOfSpawnableGO;
+    GameObject thisInstanceOfSpawnableGO;
     bool placementIsValid = false;
     GameObject cancelSpawning;
     Animator cancelSpawningAnimator;
     RaycastHit hit;
-    GameMasterPointsMechanic PointsMechanic;
 
     void Start()
     {
         spawnedOnce = false;
         cancelSpawning = FindObjectOfType<CancelSpawning>().gameObject;
         cancelSpawningAnimator = cancelSpawning.GetComponent<Animator>();
-        PointsMechanic = FindObjectOfType<GameMasterPointsMechanic>();
         gameMasterCamera = GameObject.FindGameObjectWithTag("GMCam").GetComponent<Camera>();
     }
 
-    public void spawnObject()
+    public void SpawnObject()
     {
         if (!spawnedOnce)
         {
@@ -38,7 +38,6 @@ public class ObjectSpawner : MonoBehaviour
             cancelSpawning.gameObject.SetActive(true);
             cancelSpawningAnimator.SetBool("ShowCancelSpawningButton", true);
             thisInstanceOfSpawnableGO = Instantiate(previewGO, gameMasterCamera.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, 0)), Quaternion.identity);
-            PointsMechanic.substractPoints(thisInstanceOfSpawnableGO);
             spawnedOnce = true;
         }
     }
@@ -73,13 +72,13 @@ public class ObjectSpawner : MonoBehaviour
             {
                 thisInstanceOfSpawnableGO.transform.position = hit.point;
             }
-            else {
+            else
+            {
                 placementIsValid = false;
             }
 
             if (Input.GetMouseButtonDown(0) && spawnedOnce && placementIsValid)
             {
-                //ActivateAI();
                 Instantiate(spawnableGO, thisInstanceOfSpawnableGO.transform.position, thisInstanceOfSpawnableGO.transform.rotation);
                 Destroy(thisInstanceOfSpawnableGO);
                 spawnedOnce = false;
@@ -94,6 +93,10 @@ public class ObjectSpawner : MonoBehaviour
         }
     }
 
+    void Pay() {
+        GameManager.money -= price;
+        GameManager.income += incomeGain;
+    }
     void PlacementIsValidCheck(RaycastHit hitReference, GameObject spawnedGOCheckForPlacement)
     {
         if (spawnedOnce)
@@ -115,12 +118,5 @@ public class ObjectSpawner : MonoBehaviour
                 placementIsValid = false;
             }
         }
-    }
-
-    void ActivateAI()
-    {
-        if (thisInstanceOfSpawnableGO.GetComponent<AI>() != null)
-            thisInstanceOfSpawnableGO.GetComponent<AI>().Activate();
-
     }
 }

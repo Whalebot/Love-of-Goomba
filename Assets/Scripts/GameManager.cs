@@ -1,20 +1,32 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
     public static bool gameOver;
-    public GameObject GMBase;
+    public Status GMBase;
     public int GMMoney;
-    public int income;
+    public static int money;
+    public int GMIncome;
+    public static int income;
     public float incomeTimer;
     public float lastIncome;
+    public float mana;
+    [SerializeField] TextMeshProUGUI moneyText;
+    [SerializeField] TextMeshProUGUI incomeText;
+    [SerializeField] TextMeshProUGUI manaText;
+
     [SerializeField] float timeCounter;
-    public GameMasterPointsMechanic gmPoint;
+
     // Start is called before the first frame update
     void Start()
     {
+        money = GMMoney;
+        income = GMIncome;
         lastIncome = Time.time;
     }
 
@@ -22,8 +34,8 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         timeCounter = Time.time;
-
-        if (GMBase == null) gameOver = true;
+        if(GMBase != null)
+        if (GMBase.health <= 0) { gameOver = true;  Destroy(GMBase.gameObject); }
 
         if (Time.time > incomeTimer + lastIncome)
         {
@@ -31,9 +43,25 @@ public class GameManager : MonoBehaviour
             GiveIncome();
         }
 
+        if (moneyText != null) moneyText.text = money + "";
+        if (incomeText != null) incomeText.text = income + "";
+        if (manaText != null) manaText.text = mana + "";
+
+
+        if (Input.GetKeyDown("r")) {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+        if (Input.GetKeyDown("1")) {
+            SceneManager.LoadScene(0);
+        }
+        if (Input.GetKeyDown("2"))
+        {
+            SceneManager.LoadScene(1);
+        }
     }
 
-    public void GiveIncome() {
-        gmPoint.GameMasterPointsForSpawning += income;
+    public void GiveIncome()
+    {
+        money += income;
     }
 }

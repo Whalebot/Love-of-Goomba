@@ -24,7 +24,6 @@ public class AI : MonoBehaviour
     [HeaderAttribute("Ground detection")]
     [SerializeField] float groundDistance;
     public int income;
-    GameManager gm;
 
     [HideInInspector] public int attackID;
     [HideInInspector] public bool hitstunStart;
@@ -47,8 +46,6 @@ public class AI : MonoBehaviour
     }
     void Start()
     {
-        if (gm != null)
-            gm = GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>();
     }
 
     void FixedUpdate()
@@ -222,8 +219,6 @@ public class AI : MonoBehaviour
 
         isActive = true;
         agent.enabled = true;
-        if(gm != null)
-        gm.income += income;
     }
 }
 
