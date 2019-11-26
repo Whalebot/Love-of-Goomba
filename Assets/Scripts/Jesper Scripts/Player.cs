@@ -81,7 +81,7 @@ public class Player : MonoBehaviour
         }
         if (Input.GetAxisRaw("Turn") > 0 && canInput == true)
         {
-            if (axisInUse == false)
+            if (axisInUse == false && activeWeapon == 1)
             {
                 anim.SetTrigger("Stinger");
                 axisInUse = true;
@@ -179,6 +179,9 @@ public class Player : MonoBehaviour
     {
         if (anim.GetNextAnimatorStateInfo(0).IsName("Stinger"))
         {
+            canInput = false;
+            shooter.canShoot = false;
+            shooter.cooldown = shooter.shottyFireRate;
             rb.velocity = Vector3.zero;
             rb.AddForce(transform.forward * stingerForce);
         }
