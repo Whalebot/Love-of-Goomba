@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4114590360140887606}
   - component: {fileID: 8681594427933598680}
   - component: {fileID: 643830625}
+  - component: {fileID: 8658005741392078232}
   m_Layer: 9
   m_Name: Base
   m_TagString: Untagged
@@ -28,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 2312154591261742289}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 2.02, z: -19.37}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_Children:
   - {fileID: 115951714725855830}
   - {fileID: 6169330097530529690}
@@ -84,6 +85,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &8658005741392078232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2312154591261742289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd1c3009eb4d3494f8b58cc8b384ac51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerInBounds: 0
 --- !u!1001 &2312154591216745138
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -91,6 +105,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2312154591261742317}
     m_Modifications:
+    - target: {fileID: 8470058482264825131, guid: bf3816d63b1f03b4690185e8972f6c90,
+        type: 3}
+      propertyPath: m_Name
+      value: Health Bar
+      objectReference: {fileID: 0}
+    - target: {fileID: 8470058482264825131, guid: bf3816d63b1f03b4690185e8972f6c90,
+        type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: 8470058482264825128, guid: bf3816d63b1f03b4690185e8972f6c90,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -196,25 +220,15 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 8470058482264825131, guid: bf3816d63b1f03b4690185e8972f6c90,
+    - target: {fileID: 8470058482264825129, guid: bf3816d63b1f03b4690185e8972f6c90,
         type: 3}
-      propertyPath: m_Name
-      value: Health Bar
-      objectReference: {fileID: 0}
-    - target: {fileID: 8470058482264825131, guid: bf3816d63b1f03b4690185e8972f6c90,
-        type: 3}
-      propertyPath: m_Layer
-      value: 14
+      propertyPath: owner
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8470058481559691396, guid: bf3816d63b1f03b4690185e8972f6c90,
         type: 3}
       propertyPath: m_Layer
       value: 14
-      objectReference: {fileID: 0}
-    - target: {fileID: 8470058482264825129, guid: bf3816d63b1f03b4690185e8972f6c90,
-        type: 3}
-      propertyPath: owner
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8470058483013100123, guid: bf3816d63b1f03b4690185e8972f6c90,
         type: 3}

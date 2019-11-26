@@ -81,6 +81,7 @@ public class ObjectSpawner : MonoBehaviour
             {
                 Instantiate(spawnableGO, thisInstanceOfSpawnableGO.transform.position, thisInstanceOfSpawnableGO.transform.rotation);
                 Destroy(thisInstanceOfSpawnableGO);
+                Pay();
                 spawnedOnce = false;
                 //    foreach (GameObject spawnerButton in GameMasterPointsMechanic.spawnerButtons)
                 {

@@ -32,7 +32,27 @@ PrefabInstance:
     - target: {fileID: 6652609766816998494, guid: 009d160ef58ca3543ae8983f40a410d9,
         type: 3}
       propertyPath: m_Name
-      value: Gun Demon
+      value: Gun Demon Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 6652609766816998484, guid: 009d160ef58ca3543ae8983f40a410d9,
+        type: 3}
+      propertyPath: range
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6652609766816998484, guid: 009d160ef58ca3543ae8983f40a410d9,
+        type: 3}
+      propertyPath: viewAngle
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 6652609766816998491, guid: 009d160ef58ca3543ae8983f40a410d9,
+        type: 3}
+      propertyPath: m_Speed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6652609766816998491, guid: 009d160ef58ca3543ae8983f40a410d9,
+        type: 3}
+      propertyPath: m_StoppingDistance
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6652609766816998490, guid: 009d160ef58ca3543ae8983f40a410d9,
         type: 3}
@@ -89,31 +109,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6652609766816998484, guid: 009d160ef58ca3543ae8983f40a410d9,
+    - target: {fileID: 5417293381681030128, guid: 009d160ef58ca3543ae8983f40a410d9,
         type: 3}
-      propertyPath: range
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 6652609766816998484, guid: 009d160ef58ca3543ae8983f40a410d9,
-        type: 3}
-      propertyPath: viewAngle
-      value: 50
+      propertyPath: health
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 1747456321713270144, guid: 009d160ef58ca3543ae8983f40a410d9,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: d69b2008c8449f84fa0ddbc799913e0a, type: 2}
-    - target: {fileID: 6652609766816998491, guid: 009d160ef58ca3543ae8983f40a410d9,
-        type: 3}
-      propertyPath: m_Speed
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6652609766816998491, guid: 009d160ef58ca3543ae8983f40a410d9,
-        type: 3}
-      propertyPath: m_StoppingDistance
-      value: 4
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 009d160ef58ca3543ae8983f40a410d9, type: 3}
 --- !u!1 &59359735182200207 stripped

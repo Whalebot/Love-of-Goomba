@@ -33,6 +33,8 @@ public class AI : MonoBehaviour
     public bool inRLine;
     public bool withinAngle;
     public bool inLineOfSight;
+    public float agentUpdateDelay;
+    float lastAgentUpdate;
 
     public enum State { Idle, Move, Attack, Hitstun };
     public State state = State.Move;
@@ -42,7 +44,7 @@ public class AI : MonoBehaviour
         if (target == null) target = GameObject.FindGameObjectWithTag("Player");
         agent = GetComponent<NavMeshAgent>();
         status = GetComponent<Status>();
-       
+
     }
     void Start()
     {
@@ -50,10 +52,6 @@ public class AI : MonoBehaviour
 
     void FixedUpdate()
     {
-        inLine = ClearLine();
-        inRLine = ReverseLine();
-        withinAngle = WithinAngle();
-        inLineOfSight = InLineOfSight();
         switch (state)
         {
             case State.Idle:
@@ -72,13 +70,15 @@ public class AI : MonoBehaviour
             default: break;
         }
 
-        if (status.isDead) {
+        if (status.isDead)
+        {
             Death();
         }
         Debug.DrawLine(transform.position, transform.position - transform.up * groundDistance, Color.red);
     }
 
-    void Death() {
+    void Death()
+    {
         Instantiate(deathFX, transform.position, transform.rotation);
         Destroy(gameObject);
     }
@@ -89,19 +89,24 @@ public class AI : MonoBehaviour
     }
     void Move()
     {
-        if (agent.isOnNavMesh)
+        if (Time.time > lastAgentUpdate + agentUpdateDelay)
         {
-            agent.SetDestination(target.transform.position);
-        }
-        if (agent.enabled)
-        {
-            if (!TargetInRange() || !InLineOfSight())
-                agent.isStopped = false;
+            lastAgentUpdate = Time.time;
+            if (agent.isOnNavMesh)
+            {
+                agent.SetDestination(target.transform.position);
+            }
+            if (agent.enabled)
+            {
+                if (!TargetInRange() || !InLineOfSight())
+                    agent.isStopped = false;
+            }
+
         }
 
         if (status.hitStun > 0) TransitionToHitstun();
 
-        if (TargetInRange() && !WithinAngle() )
+        if (TargetInRange() && !WithinAngle())
         {
             ManualRotation();
         }
@@ -111,8 +116,13 @@ public class AI : MonoBehaviour
     void Attack()
     {
         if (status.hitStun > 0) TransitionToHitstun();
-        if (agent.enabled)
-            agent.isStopped = true;
+
+        if (Time.time > lastAgentUpdate + agentUpdateDelay)
+        {
+            lastAgentUpdate = Time.time;
+            if (agent.enabled)
+                agent.isStopped = true;
+        }
 
         ManualRotation();
 
@@ -120,13 +130,19 @@ public class AI : MonoBehaviour
     }
     void Hitstun()
     {
-        if (agent.enabled)
-            agent.isStopped = true;
+        if (Time.time > lastAgentUpdate + agentUpdateDelay)
+        {
+            lastAgentUpdate = Time.time;
 
-        if (status.hitStun <= 0 ) state = State.Move;
+            if (agent.enabled)
+                agent.isStopped = true;
+        }
+
+        if (status.hitStun <= 0) state = State.Move;
     }
 
-    void TransitionToHitstun() {
+    void TransitionToHitstun()
+    {
         hitstunStart = true;
         state = State.Hitstun;
     }
@@ -152,26 +168,15 @@ public class AI : MonoBehaviour
     }
 
 
-    public bool WithinAngle() {
+    public bool WithinAngle()
+    {
         bool withinAngle = (Vector3.Angle(transform.forward, TargetDirectionIgnoreTilt()) < viewAngle / 2);
         return withinAngle;
     }
 
-    public bool ClearLine() {
-        bool clearLine = Physics.Raycast(transform.position, TargetDirectionVector(), out hit, range, mask) && hit.collider.gameObject.name == ("Player");
-        return clearLine;
-    }
-
-    public bool ReverseLine()
+    public bool ClearLine()
     {
-      
-        bool clearLine = Physics.Raycast(target.transform.position, -TargetDirectionVector(), out hit2, range, reverseMask);
-        if (hit2.collider != null)
-        {
-            clearLine = hit2.collider.gameObject == gameObject;
-        }
-        else clearLine = true;
-        Debug.DrawLine(target.transform.position, hit2.point, Color.magenta);
+        bool clearLine = Physics.Raycast(transform.position, TargetDirectionVector(), out hit, range, mask) && hit.collider.gameObject.name == ("Player");
         return clearLine;
     }
 
@@ -197,7 +202,7 @@ public class AI : MonoBehaviour
 
     public Vector3 TargetDirectionIgnoreTilt()
     {
-        Vector3 relativePos =new Vector3( target.transform.position.x , 0 , target.transform.position.z) - new Vector3(transform.position.x, 0,transform.position.z);
+        Vector3 relativePos = new Vector3(target.transform.position.x, 0, target.transform.position.z) - new Vector3(transform.position.x, 0, transform.position.z);
         return relativePos.normalized;
     }
 

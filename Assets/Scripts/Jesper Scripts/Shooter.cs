@@ -31,6 +31,7 @@ public class Shooter : MonoBehaviour
     public bool canShoot = true;
     public float cooldown;
     public float gunCharge;
+    public int maxCharge;
     Animator anim;
     Camera cam;
     // Start is called before the first frame update
@@ -56,7 +57,7 @@ public class Shooter : MonoBehaviour
             gunCharge += 1;
         }
 
-        if(gunCharge == 300)
+        if(gunCharge == maxCharge)
         {
             Instantiate(chargeSFX, transform.position, Quaternion.identity);
         }
@@ -68,7 +69,7 @@ public class Shooter : MonoBehaviour
 
         if(Input.GetButtonUp("Fire1"))
         {
-            if (player.activeWeapon == 0 && gunCharge > 300)
+            if (player.activeWeapon == 0 && gunCharge > maxCharge)
             {
                 Instantiate(superGunSFX, transform.position, Quaternion.identity);
                 Instantiate(smallExplosionFX, transform.position, Quaternion.identity);

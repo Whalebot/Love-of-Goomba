@@ -83,6 +83,14 @@ BlendTree:
     m_DirectBlendParameter: Charge
     m_Mirror: 0
   - serializedVersion: 2
+    m_Motion: {fileID: 7400000, guid: 717405daa1c03a042b2c7b6442a64cf5, type: 2}
+    m_Threshold: 50
+    m_Position: {x: 0, y: 0}
+    m_TimeScale: 1
+    m_CycleOffset: 0
+    m_DirectBlendParameter: Charge
+    m_Mirror: 0
+  - serializedVersion: 2
     m_Motion: {fileID: 7400000, guid: 99ec0006d6896094f9b2defa18bd6030, type: 2}
     m_Threshold: 100
     m_Position: {x: 0, y: 0}
@@ -91,16 +99,8 @@ BlendTree:
     m_DirectBlendParameter: Charge
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: 717405daa1c03a042b2c7b6442a64cf5, type: 2}
-    m_Threshold: 200
-    m_Position: {x: 0, y: 0}
-    m_TimeScale: 1
-    m_CycleOffset: 0
-    m_DirectBlendParameter: Charge
-    m_Mirror: 0
-  - serializedVersion: 2
     m_Motion: {fileID: 7400000, guid: 15df3edc34133954b9ff19ddd6d06b4d, type: 2}
-    m_Threshold: 300
+    m_Threshold: 150
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
     m_CycleOffset: 0
@@ -109,7 +109,7 @@ BlendTree:
   m_BlendParameter: Charge
   m_BlendParameterY: Blend
   m_MinThreshold: 0
-  m_MaxThreshold: 300
+  m_MaxThreshold: 150
   m_UseAutomaticThresholds: 0
   m_NormalizedBlendValues: 0
   m_BlendType: 0

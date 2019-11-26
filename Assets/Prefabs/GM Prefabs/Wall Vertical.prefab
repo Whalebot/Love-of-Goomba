@@ -1,5 +1,24 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8083733105526591151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8684513012887094239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4a8226ef71f07a48a348bbd6be3f40e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 50
+  hitStun: 0
+  inHitStun: 0
+  hitStunStart: 0
+  rb: {fileID: 0}
+  knockbackDirection: {x: 0, y: 0}
+  isDead: 0
 --- !u!1001 &4639977189858649792
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10,7 +29,12 @@ PrefabInstance:
     - target: {fileID: 4098579371920729375, guid: 429fd0cce8bcec140ae6591b58aad93c,
         type: 3}
       propertyPath: m_Name
-      value: Cube obstacle 1
+      value: Wall Vertical
+      objectReference: {fileID: 0}
+    - target: {fileID: 4098579371920729375, guid: 429fd0cce8bcec140ae6591b58aad93c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4098579371920729374, guid: 429fd0cce8bcec140ae6591b58aad93c,
         type: 3}
@@ -77,5 +101,12 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 7
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -8524164012883957048, guid: 429fd0cce8bcec140ae6591b58aad93c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 429fd0cce8bcec140ae6591b58aad93c, type: 3}
+--- !u!1 &8684513012887094239 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4098579371920729375, guid: 429fd0cce8bcec140ae6591b58aad93c,
+    type: 3}
+  m_PrefabInstance: {fileID: 4639977189858649792}
+  m_PrefabAsset: {fileID: 0}

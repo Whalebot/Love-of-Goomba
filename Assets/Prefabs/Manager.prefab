@@ -147,8 +147,8 @@ MonoBehaviour:
     type: 3}
   spawnableGO: {fileID: 59359735182200207, guid: 680d6424247503d41a313fe9368352e4,
     type: 3}
-  price: 0
-  incomeGain: 0
+  price: 10
+  incomeGain: 2
   rayMask:
     serializedVersion: 2
     m_Bits: 1
@@ -314,7 +314,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 004cd53bd2504554b8fd2ed7000c75b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  previewGO: {fileID: 4098579371920729375, guid: 429fd0cce8bcec140ae6591b58aad93c,
+  previewGO: {fileID: 5105381109916684555, guid: 9f341e1461496674cb0682769223cc5d,
     type: 3}
   spawnableGO: {fileID: 59359735182200207, guid: 680d6424247503d41a313fe9368352e4,
     type: 3}
@@ -1541,11 +1541,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 004cd53bd2504554b8fd2ed7000c75b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  previewGO: {fileID: 3371555376746280792, guid: 4b42cb243c9820147b2d9f0b1984e353,
+  previewGO: {fileID: 8684513012887094239, guid: 1c3b7be578b96a54bb49ada7ed3be62f,
     type: 3}
-  spawnableGO: {fileID: 3371555376746280792, guid: 4b42cb243c9820147b2d9f0b1984e353,
+  spawnableGO: {fileID: 8684513012887094239, guid: 1c3b7be578b96a54bb49ada7ed3be62f,
     type: 3}
-  price: 0
+  price: 5
   incomeGain: 0
   rayMask:
     serializedVersion: 2
@@ -1692,10 +1692,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 004cd53bd2504554b8fd2ed7000c75b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  previewGO: {fileID: 100000, guid: a86608a16093647c082aa3ccf69d2558, type: 3}
-  spawnableGO: {fileID: 1531308271049452847, guid: 71a6c30c22b227f40964d714049808e8,
+  previewGO: {fileID: 3371555376746280792, guid: 4b42cb243c9820147b2d9f0b1984e353,
     type: 3}
-  price: 0
+  spawnableGO: {fileID: 3371555376746280792, guid: 4b42cb243c9820147b2d9f0b1984e353,
+    type: 3}
+  price: 5
   incomeGain: 0
   rayMask:
     serializedVersion: 2
@@ -2492,12 +2493,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 004cd53bd2504554b8fd2ed7000c75b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  previewGO: {fileID: 3371555376746280792, guid: 4b42cb243c9820147b2d9f0b1984e353,
+  previewGO: {fileID: 5105381109916684555, guid: 9f341e1461496674cb0682769223cc5d,
     type: 3}
-  spawnableGO: {fileID: 4218069879181996037, guid: 9651541e0ffb1834daa3ad3ce9929e7d,
+  spawnableGO: {fileID: 2505965703496896933, guid: a2dcd32faceb4df4f993a4523c55d301,
     type: 3}
-  price: 0
-  incomeGain: 0
+  price: 25
+  incomeGain: 5
   rayMask:
     serializedVersion: 2
     m_Bits: 1
@@ -2663,12 +2664,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 004cd53bd2504554b8fd2ed7000c75b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  previewGO: {fileID: 3371555376746280792, guid: 4b42cb243c9820147b2d9f0b1984e353,
+  previewGO: {fileID: 5105381109916684555, guid: 9f341e1461496674cb0682769223cc5d,
     type: 3}
   spawnableGO: {fileID: 4218069879181996037, guid: 9651541e0ffb1834daa3ad3ce9929e7d,
     type: 3}
-  price: 0
-  incomeGain: 0
+  price: 10
+  incomeGain: 2
   rayMask:
     serializedVersion: 2
     m_Bits: 1
@@ -3269,6 +3270,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2312154591261742317, guid: 1453e9ae02cad3e40b765310ef811d2d,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2312154591261742317, guid: 1453e9ae02cad3e40b765310ef811d2d,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2312154591261742317, guid: 1453e9ae02cad3e40b765310ef811d2d,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1453e9ae02cad3e40b765310ef811d2d, type: 3}

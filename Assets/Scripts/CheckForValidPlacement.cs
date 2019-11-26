@@ -14,7 +14,6 @@ public class CheckForValidPlacement : MonoBehaviour
 
     void OnTriggerStay(Collider other)
     {
-        print(other.gameObject.name);
         playerInBounds = false;
     }
 

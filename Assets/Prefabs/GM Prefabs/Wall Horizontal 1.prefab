@@ -15,8 +15,8 @@ GameObject:
   - component: {fileID: 5167406380323920480}
   - component: {fileID: 1685947346527729778}
   - component: {fileID: 3353642588543737793}
-  - component: {fileID: 3949634954556536872}
-  m_Layer: 10
+  - component: {fileID: 536961980736370637}
+  m_Layer: 9
   m_Name: Wall Horizontal 1
   m_TagString: ValidPlacementTag
   m_Icon: {fileID: 0}
@@ -142,7 +142,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &3949634954556536872
+--- !u!114 &536961980736370637
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -151,8 +151,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 3371555376746280792}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c96d11265419a3479ded9f00f56dc81, type: 3}
+  m_Script: {fileID: 11500000, guid: e4a8226ef71f07a48a348bbd6be3f40e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 0
-  income: 0
+  health: 100
+  hitStun: 0
+  inHitStun: 0
+  hitStunStart: 0
+  rb: {fileID: 0}
+  knockbackDirection: {x: 0, y: 0}
+  isDead: 0
