@@ -93,7 +93,8 @@ public class Shooter : MonoBehaviour
         {
             if(player.activeWeapon == 0)
             {
-                Instantiate(gunSFX, transform.position, Quaternion.identity);
+                GameObject gunFX = Instantiate(gunSFX, transform.position, transform.rotation);
+                gunFX.transform.parent = gameObject.transform;
                 anim.SetTrigger("Shoot");
                 canShoot = false;
                 cooldown = gunFireRate;
@@ -105,13 +106,14 @@ public class Shooter : MonoBehaviour
                         status.Health -= gunDamage;
                         status.TakePushback(transform.forward * gunPushback);
                         status.HitStun = gunHitStun;
-                        Instantiate(bloodFX, hit.point, Quaternion.identity);
+                        Instantiate(bloodFX, hit.point, transform.rotation);
                     }
                 }
             }
             if(player.activeWeapon == 1)
             {
-                Instantiate(shottySFX, transform.position, Quaternion.identity);
+                GameObject gunFX = Instantiate(shottySFX, transform.position +transform.forward*0.7f, transform.rotation);
+                gunFX.transform.parent = gameObject.transform;
                 anim.SetTrigger("Shoot");
                 canShoot = false;
                 cooldown = shottyFireRate;
@@ -123,7 +125,7 @@ public class Shooter : MonoBehaviour
                         status.Health -= shottyDamage;
                         status.TakePushback(transform.forward * shottyPushback);
                         status.HitStun = shottyHitStun;
-                        Instantiate(bloodFX, hit.point, Quaternion.identity);
+                        Instantiate(bloodFX, hit.point, transform.rotation);
                     }
                 }
             }

@@ -29,4 +29,13 @@ public class AnimationHelper : MonoBehaviour
         player.canInput = true;
     }
 
+    void SlideCheck()
+    {
+        player.SlideCheck();
+    }
+
+    void CantMove()
+    {
+        player.canMove = false;
+    }
 }
