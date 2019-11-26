@@ -12,6 +12,7 @@ public class Status : MonoBehaviour
     [HideInInspector] public Vector2 knockbackDirection;
     public delegate void OnHealthChangeDelegate(int newVal);
     public event OnHealthChangeDelegate OnHealthChange;
+    public bool isDead;
 
     // Start is called before the first frame update
     void Start()
@@ -70,6 +71,6 @@ public class Status : MonoBehaviour
 
     void Death()
     {
-        Destroy(gameObject);
+        isDead = true;
     }
 }

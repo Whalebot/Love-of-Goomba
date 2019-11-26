@@ -27,6 +27,7 @@ public class AI : MonoBehaviour
     [HideInInspector] public int attackID;
     [HideInInspector] public bool hitstunStart;
     [HideInInspector] public bool attackStart;
+    [SerializeField] GameObject deathFX;
 
     public enum State { Idle, Move, Attack, Hitstun };
     public State state = State.Move;
@@ -64,8 +65,15 @@ public class AI : MonoBehaviour
             default: break;
         }
 
-
+        if (status.isDead) {
+            Death();
+        }
         Debug.DrawLine(transform.position, transform.position - transform.up * groundDistance, Color.red);
+    }
+
+    void Death() {
+        Instantiate(deathFX, transform.position, transform.rotation);
+        Destroy(gameObject);
     }
 
     void Idle()

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3468849846785628900}
   - component: {fileID: 8370510845054313728}
   - component: {fileID: 7650875427822710129}
-  m_Layer: 13
+  m_Layer: 14
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 325861945649781130}
   - component: {fileID: 3833102634694960294}
   - component: {fileID: 664976947357513766}
-  m_Layer: 13
+  m_Layer: 14
   m_Name: Health Bar (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -507,6 +507,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1747456321295018185}
   - component: {fileID: 1747456321295018184}
+  - component: {fileID: 4610784369530950644}
   m_Layer: 0
   m_Name: demonT-Pose
   m_TagString: Untagged
@@ -549,6 +550,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &4610784369530950644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1747456321295018191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 588c6b11a21d25b40a1ea93137e571d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  footL: {fileID: 1480022325170901190, guid: 21c6f7a7feb49ac4786d8ccfca3232bd, type: 3}
+  footR: {fileID: 1820900044950580113, guid: cfce61fa86569eb42b683ced482b934f, type: 3}
 --- !u!1 &1747456321357069705
 GameObject:
   m_ObjectHideFlags: 0
@@ -1849,7 +1864,7 @@ GameObject:
   - component: {fileID: 2559360778301162677}
   - component: {fileID: 2823422357929780760}
   - component: {fileID: 7036368389312762792}
-  m_Layer: 13
+  m_Layer: 14
   m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1978,6 +1993,7 @@ MonoBehaviour:
   attackID: 0
   hitstunStart: 0
   attackStart: 0
+  deathFX: {fileID: 3190682283792670280, guid: 37d06be735cf6424fb89ac22dc98939b, type: 3}
   state: 1
 --- !u!195 &6652609766816998491
 NavMeshAgent:
@@ -2035,6 +2051,7 @@ MonoBehaviour:
   hitStunStart: 0
   rb: {fileID: 0}
   knockbackDirection: {x: 0, y: 0}
+  isDead: 0
 --- !u!114 &5752822207953238768
 MonoBehaviour:
   m_ObjectHideFlags: 0

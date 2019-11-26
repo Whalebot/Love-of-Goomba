@@ -7,7 +7,7 @@ public class Enemy : MonoBehaviour
     public bool isRanged;
     [SerializeField] GameObject projectile;
     [SerializeField] Transform shootOrigin;
-
+    [SerializeField] GameObject attackFX;
     [SerializeField] LayerMask mask;
     RaycastHit hit;
     [SerializeField] float shootDelay;
@@ -51,7 +51,7 @@ public class Enemy : MonoBehaviour
     {
         ai.attackID = 0;
         ai.attackStart = true;
-      //  Instantiate(projectile, shootOrigin.position, ai.TargetDirection(shootOrigin));
+        Instantiate(attackFX, shootOrigin.position, ai.TargetDirection(shootOrigin) , shootOrigin);
     }
 
     public void AttackSpawn() { Instantiate(projectile, shootOrigin.position, ai.TargetDirection(shootOrigin)); }

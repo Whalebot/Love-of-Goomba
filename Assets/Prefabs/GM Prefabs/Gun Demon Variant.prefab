@@ -16,22 +16,12 @@ MonoBehaviour:
   projectile: {fileID: 1944136812685012702, guid: 35bd4543d60b1ff4e889ff756c089c1f,
     type: 3}
   shootOrigin: {fileID: 4953964317361870837}
+  attackFX: {fileID: 3888371578901839607, guid: ff6460c103e4d2046bf693557157e0db,
+    type: 3}
   mask:
     serializedVersion: 2
     m_Bits: 1025
   shootDelay: 2
---- !u!114 &1420550237
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4953964317496574238}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 588c6b11a21d25b40a1ea93137e571d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &6665382461219072465
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -114,12 +104,6 @@ PrefabInstance:
 --- !u!1 &59359735182200207 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6652609766816998494, guid: 009d160ef58ca3543ae8983f40a410d9,
-    type: 3}
-  m_PrefabInstance: {fileID: 6665382461219072465}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &4953964317496574238 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1747456321295018191, guid: 009d160ef58ca3543ae8983f40a410d9,
     type: 3}
   m_PrefabInstance: {fileID: 6665382461219072465}
   m_PrefabAsset: {fileID: 0}
