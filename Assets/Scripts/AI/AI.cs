@@ -17,7 +17,9 @@ public class AI : MonoBehaviour
     public float viewAngle;
     [SerializeField] float rotationSpeed;
     [SerializeField] LayerMask mask;
+    [SerializeField] LayerMask reverseMask;
     RaycastHit hit;
+    RaycastHit hit2;
     [Space(10)]
     [HeaderAttribute("Ground detection")]
     [SerializeField] float groundDistance;
@@ -28,6 +30,10 @@ public class AI : MonoBehaviour
     [HideInInspector] public bool hitstunStart;
     [HideInInspector] public bool attackStart;
     [SerializeField] GameObject deathFX;
+    public bool inLine;
+    public bool inRLine;
+    public bool withinAngle;
+    public bool inLineOfSight;
 
     public enum State { Idle, Move, Attack, Hitstun };
     public State state = State.Move;
@@ -47,6 +53,10 @@ public class AI : MonoBehaviour
 
     void FixedUpdate()
     {
+        inLine = ClearLine();
+        inRLine = ReverseLine();
+        withinAngle = WithinAngle();
+        inLineOfSight = InLineOfSight();
         switch (state)
         {
             case State.Idle:
@@ -94,10 +104,9 @@ public class AI : MonoBehaviour
 
         if (status.hitStun > 0) TransitionToHitstun();
 
-        if (TargetInRange() && !WithinAngle() && ClearLine())
+        if (TargetInRange() && !WithinAngle() )
         {
             ManualRotation();
-
         }
 
         if (TargetInRange() && InLineOfSight()) state = State.Attack;
@@ -147,7 +156,7 @@ public class AI : MonoBehaviour
 
 
     public bool WithinAngle() {
-        bool withinAngle = (Vector3.Angle(transform.forward, TargetDirectionVector()) < viewAngle / 2);
+        bool withinAngle = (Vector3.Angle(transform.forward, TargetDirectionIgnoreTilt()) < viewAngle / 2);
         return withinAngle;
     }
 
@@ -155,9 +164,23 @@ public class AI : MonoBehaviour
         bool clearLine = Physics.Raycast(transform.position, TargetDirectionVector(), out hit, range, mask) && hit.collider.gameObject.name == ("Player");
         return clearLine;
     }
+
+    public bool ReverseLine()
+    {
+      
+        bool clearLine = Physics.Raycast(target.transform.position, -TargetDirectionVector(), out hit2, range, reverseMask);
+        if (hit2.collider != null)
+        {
+            clearLine = hit2.collider.gameObject == gameObject;
+        }
+        else clearLine = true;
+        Debug.DrawLine(target.transform.position, hit2.point, Color.magenta);
+        return clearLine;
+    }
+
     public bool InLineOfSight()
     {
-        bool seePlayer = ClearLine()  && WithinAngle() ;
+        bool seePlayer = ClearLine() && WithinAngle();
         Debug.DrawLine(transform.position, hit.point, Color.yellow);
 
         return seePlayer;
@@ -172,6 +195,12 @@ public class AI : MonoBehaviour
     public Vector3 TargetDirectionVector()
     {
         Vector3 relativePos = target.transform.position + Vector3.up * AIManager.aimOffset - transform.position;
+        return relativePos.normalized;
+    }
+
+    public Vector3 TargetDirectionIgnoreTilt()
+    {
+        Vector3 relativePos =new Vector3( target.transform.position.x , 0 , target.transform.position.z) - new Vector3(transform.position.x, 0,transform.position.z);
         return relativePos.normalized;
     }
 

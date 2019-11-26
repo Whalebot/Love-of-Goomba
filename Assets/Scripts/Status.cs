@@ -55,6 +55,7 @@ public class Status : MonoBehaviour
 
     public void TakePushback(Vector3 direction)
     {
+        rb.velocity = Vector3.zero;
         rb.AddForce(direction, ForceMode.Impulse);
         knockbackDirection = (direction - transform.position).normalized;
     }
