@@ -381,11 +381,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1425938097997191029}
     m_Modifications:
-    - target: {fileID: 4288361064703020353, guid: db2ba05c5a70b884590f8819ad7d77db,
-        type: 3}
-      propertyPath: m_Name
-      value: PlayerCamera
-      objectReference: {fileID: 0}
     - target: {fileID: 4288361064703020356, guid: db2ba05c5a70b884590f8819ad7d77db,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -441,6 +436,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4288361064703020353, guid: db2ba05c5a70b884590f8819ad7d77db,
+        type: 3}
+      propertyPath: m_Name
+      value: PlayerCamera
+      objectReference: {fileID: 0}
     - target: {fileID: 4288361064703020357, guid: db2ba05c5a70b884590f8819ad7d77db,
         type: 3}
       propertyPath: cameraOffset.y
@@ -481,6 +481,11 @@ PrefabInstance:
       propertyPath: localPlayer
       value: 
       objectReference: {fileID: 1261881425419236354}
+    - target: {fileID: 4288361064703020355, guid: db2ba05c5a70b884590f8819ad7d77db,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 24375
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db2ba05c5a70b884590f8819ad7d77db, type: 3}
 --- !u!4 &1261881425433714071 stripped
@@ -496,11 +501,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1425938097997191029}
     m_Modifications:
-    - target: {fileID: 7117268989387456931, guid: 2d0799bfa8e0b1449bc75a1f2e641520,
-        type: 3}
-      propertyPath: m_Name
-      value: Player
-      objectReference: {fileID: 0}
     - target: {fileID: 7117268989387456929, guid: 2d0799bfa8e0b1449bc75a1f2e641520,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -555,6 +555,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7117268989387456931, guid: 2d0799bfa8e0b1449bc75a1f2e641520,
+        type: 3}
+      propertyPath: m_Name
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 8137542349995102046, guid: 2d0799bfa8e0b1449bc75a1f2e641520,
         type: 3}
@@ -1322,9 +1327,18 @@ PrefabInstance:
       value: -0.0000014560529
       objectReference: {fileID: 0}
     - target: {fileID: 1870063256, guid: 2d0799bfa8e0b1449bc75a1f2e641520, type: 3}
+      propertyPath: gunFireRate
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1870063256, guid: 2d0799bfa8e0b1449bc75a1f2e641520, type: 3}
       propertyPath: shottyRange
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 1870063256, guid: 2d0799bfa8e0b1449bc75a1f2e641520, type: 3}
+      propertyPath: smallExplosionFX
+      value: 
+      objectReference: {fileID: 1000011128802252, guid: 96730f8640590934eacb6f860058e7f9,
+        type: 3}
     - target: {fileID: 899452832010761295, guid: 2d0799bfa8e0b1449bc75a1f2e641520,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1339,6 +1353,10 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -1.5902771e-15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1770255701, guid: 2d0799bfa8e0b1449bc75a1f2e641520, type: 3}
+      propertyPath: health
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2d0799bfa8e0b1449bc75a1f2e641520, type: 3}
