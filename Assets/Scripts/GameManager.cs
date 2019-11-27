@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
     public float lastIncome;
     public int GMMana;
     public static int mana;
+    public float manaDelay;
+    float lastMana;
     public static int killCount;
 
     [SerializeField] TextMeshProUGUI moneyText;
@@ -46,6 +48,13 @@ public class GameManager : MonoBehaviour
             lastIncome = Time.time;
             GiveIncome();
         }
+        if (mana < 100) {
+            if(Time.time > manaDelay + lastMana){
+                mana++;
+            }
+        }
+
+
 
         if (moneyText != null) moneyText.text = money + "";
         if (incomeText != null) incomeText.text = income + "";

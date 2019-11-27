@@ -24,7 +24,7 @@ public class GMManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(1))
         {
             Physics.Raycast(GMCam.transform.position, GMCam.ScreenPointToRay(Input.mousePosition).direction, out hit, Mathf.Infinity, rayMask);
 
