@@ -35,7 +35,7 @@ public class AI : MonoBehaviour
     public bool inLineOfSight;
     public float agentUpdateDelay;
     float lastAgentUpdate;
-
+    public GameObject spawnSound;
     public enum State { Idle, Move, Attack, Hitstun };
     public State state = State.Move;
 
@@ -48,6 +48,9 @@ public class AI : MonoBehaviour
     }
     void Start()
     {
+        if (spawnSound != null) {
+            Instantiate(spawnSound, transform.position, Quaternion.identity);
+        }
     }
 
     void FixedUpdate()

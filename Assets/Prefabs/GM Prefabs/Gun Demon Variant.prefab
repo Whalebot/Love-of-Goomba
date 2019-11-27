@@ -44,6 +44,12 @@ PrefabInstance:
       propertyPath: viewAngle
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 6652609766816998484, guid: 009d160ef58ca3543ae8983f40a410d9,
+        type: 3}
+      propertyPath: spawnSound
+      value: 
+      objectReference: {fileID: 3888371578901839607, guid: ff6460c103e4d2046bf693557157e0db,
+        type: 3}
     - target: {fileID: 6652609766816998491, guid: 009d160ef58ca3543ae8983f40a410d9,
         type: 3}
       propertyPath: m_Speed
@@ -114,6 +120,11 @@ PrefabInstance:
       propertyPath: health
       value: 25
       objectReference: {fileID: 0}
+    - target: {fileID: 9174738372452302702, guid: 009d160ef58ca3543ae8983f40a410d9,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d69b2008c8449f84fa0ddbc799913e0a, type: 2}
     - target: {fileID: 1747456321713270144, guid: 009d160ef58ca3543ae8983f40a410d9,
         type: 3}
       propertyPath: m_Materials.Array.data[0]

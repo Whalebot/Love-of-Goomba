@@ -19,6 +19,8 @@ public class GameManager : MonoBehaviour
     public static int mana;
     public float manaDelay;
     float lastMana;
+    public Image hpBar;
+    public TextMeshProUGUI text;
     public static int killCount;
 
     [SerializeField] TextMeshProUGUI moneyText;
@@ -26,10 +28,13 @@ public class GameManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI manaText;
 
     [SerializeField] float timeCounter;
+    [SerializeField] int maxHealth;
 
     // Start is called before the first frame update
     void Start()
     {
+        gameOver = false;
+        killCount = 0;
         money = GMMoney;
         income = GMIncome;
         mana = GMMana;
@@ -40,9 +45,11 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         timeCounter = Time.time;
-        if(GMBase != null)
-        if (GMBase.health <= 0) { gameOver = true;  Destroy(GMBase.gameObject); }
-
+        if (GMBase != null)
+        {
+            text.text = GMBase.health + "/" + maxHealth;
+            hpBar.fillAmount = (float)GMBase.health/ (float)maxHealth;
+        }
         if (Time.time > incomeTimer + lastIncome)
         {
             lastIncome = Time.time;
@@ -51,6 +58,7 @@ public class GameManager : MonoBehaviour
         if (mana < 100) {
             if(Time.time > manaDelay + lastMana){
                 mana++;
+                lastMana = Time.time;
             }
         }
 

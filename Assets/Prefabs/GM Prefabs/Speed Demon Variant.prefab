@@ -62,6 +62,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6942970680002953360, guid: d54336dd93f77d144a4dd103f1bf2a89,
         type: 3}
+    - target: {fileID: 6652609766816998484, guid: 009d160ef58ca3543ae8983f40a410d9,
+        type: 3}
+      propertyPath: spawnSound
+      value: 
+      objectReference: {fileID: 3888371578901839607, guid: 17e3b94574e14794185ae481556d8a86,
+        type: 3}
     - target: {fileID: 6652609766816998491, guid: 009d160ef58ca3543ae8983f40a410d9,
         type: 3}
       propertyPath: m_Speed
@@ -155,7 +161,7 @@ PrefabInstance:
     - target: {fileID: 6382294805880807793, guid: 009d160ef58ca3543ae8983f40a410d9,
         type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6382294805880807793, guid: 009d160ef58ca3543ae8983f40a410d9,
         type: 3}
