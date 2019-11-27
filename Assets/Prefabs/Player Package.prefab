@@ -2217,7 +2217,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1870063256, guid: 2d0799bfa8e0b1449bc75a1f2e641520, type: 3}
       propertyPath: mask.m_Bits
-      value: 1536
+      value: 1537
       objectReference: {fileID: 0}
     - target: {fileID: 1870063256, guid: 2d0799bfa8e0b1449bc75a1f2e641520, type: 3}
       propertyPath: smallExplosionFX

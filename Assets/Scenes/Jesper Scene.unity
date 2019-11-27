@@ -297,10 +297,14 @@ MonoBehaviour:
   incomeTimer: 10
   lastIncome: 0
   GMMana: 0
+  manaDelay: 0
+  hpBar: {fileID: 0}
+  text: {fileID: 0}
   moneyText: {fileID: 0}
   incomeText: {fileID: 0}
   manaText: {fileID: 0}
   timeCounter: 0
+  maxHealth: 0
 --- !u!4 &116884986
 Transform:
   m_ObjectHideFlags: 0
@@ -14773,10 +14777,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5765989625509383075, guid: 81b0e7ff70acfdb4cbcf167ce3091777,
+    - target: {fileID: 8306471800454763320, guid: 81b0e7ff70acfdb4cbcf167ce3091777,
         type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
+      propertyPath: mask.m_Bits
+      value: 1537
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 81b0e7ff70acfdb4cbcf167ce3091777, type: 3}
