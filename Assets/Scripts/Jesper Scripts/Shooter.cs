@@ -18,6 +18,8 @@ public class Shooter : MonoBehaviour
     public int shottyHitStun;
     public float shottyPushback;
     public float shottyRange;
+    public int shottyBullets;
+    public float shottySpread;
     public LayerMask mask;
     public GameObject gunSFX;
     public GameObject superGunSFX;
@@ -26,6 +28,7 @@ public class Shooter : MonoBehaviour
     public GameObject bigExplosionFX;
     public GameObject chargeSFX;
     public GameObject bloodFX;
+    public GameObject dustFX;
     public GameObject stingerHitBox;
     public GameObject backslideHitBox;
     public bool canShoot = true;
@@ -79,12 +82,30 @@ public class Shooter : MonoBehaviour
                 {
                     if (hit.collider)
                     {
-                        Status status = hit.transform.GetComponent<Status>();
-                        status.Health -= gunDamagelvl4;
-                        status.TakePushback(transform.forward * gunPushback);
-                        status.HitStun = gunHitStun;
-                        Instantiate(bigExplosionFX, hit.point, Quaternion.identity);
-                        Instantiate(bloodFX, hit.point, Quaternion.identity);
+                        if(hit.transform.GetComponent<Status>() != null)
+                        {
+                            if (hit.transform.gameObject.layer == 9)
+                            {
+                                Status status = hit.transform.GetComponent<Status>();
+                                status.Health -= gunDamagelvl4;
+                                status.TakePushback(transform.forward * gunPushback);
+                                status.HitStun = gunHitStun;
+                                Instantiate(bigExplosionFX, hit.point, Quaternion.identity);
+                                Instantiate(bloodFX, hit.point, Quaternion.identity);
+                            }
+                            if (hit.transform.gameObject.layer == 10)
+                            {
+                                Status status = hit.transform.GetComponent<Status>();
+                                status.Health -= gunDamagelvl4;
+                                status.TakePushback(transform.forward * gunPushback);
+                                status.HitStun = gunHitStun;
+                                Instantiate(bigExplosionFX, hit.point, Quaternion.identity);
+                            }
+                        }
+                        else
+                        {
+                            Instantiate(bigExplosionFX, hit.point, Quaternion.identity);
+                        }
                     }
                 }
             }
@@ -104,11 +125,30 @@ public class Shooter : MonoBehaviour
                 {
                     if (hit.collider)
                     {
-                        Status status = hit.transform.GetComponent<Status>();
-                        status.Health -= gunDamage;
-                        status.TakePushback(transform.forward * gunPushback);
-                        status.HitStun = gunHitStun;
-                        Instantiate(bloodFX, hit.point, transform.rotation);
+                        if(hit.transform.GetComponent<Status>() != null)
+                        {
+                            if (hit.transform.gameObject.layer == 9)
+                            {
+                                Status status = hit.transform.GetComponent<Status>();
+                                status.Health -= gunDamage;
+                                status.TakePushback(transform.forward * gunPushback);
+                                status.HitStun = gunHitStun;
+                                Instantiate(bloodFX, hit.point, transform.rotation);
+                            }
+                            if (hit.transform.gameObject.layer == 10)
+                            {
+                                Status status = hit.transform.GetComponent<Status>();
+                                status.Health -= gunDamage;
+                                status.TakePushback(transform.forward * gunPushback);
+                                status.HitStun = gunHitStun;
+                                Instantiate(dustFX, hit.point, transform.rotation);
+                            }
+                        }
+                        else
+                        {
+                            Instantiate(dustFX, hit.point, Quaternion.LookRotation(hit.normal,transform.up));
+                        }
+                        
                     }
                 }
             }
@@ -119,15 +159,36 @@ public class Shooter : MonoBehaviour
                 anim.SetTrigger("Shoot");
                 canShoot = false;
                 cooldown = shottyFireRate;
-                if (Physics.Raycast(ray, out hit, shottyRange, mask))
+
+                for (int i = 0; i < shottyBullets; i++)
                 {
-                    if (hit.collider)
+                    Ray shottyRay = cam.ViewportPointToRay(new Vector3(Random.Range(0.5f - shottySpread, 0.5f + shottySpread), Random.Range(0.5f - shottySpread, 0.5f + shottySpread)));
+
+                    if (Physics.Raycast(shottyRay, out hit, shottyRange, mask))
                     {
-                        Status status = hit.transform.GetComponent<Status>();
-                        status.Health -= shottyDamage;
-                        status.TakePushback(transform.forward * shottyPushback);
-                        status.HitStun = shottyHitStun;
-                        Instantiate(bloodFX, hit.point, transform.rotation);
+                        if (hit.collider && hit.transform.GetComponent<Status>() != null)
+                        {
+                            if (hit.transform.gameObject.layer == 9)
+                            {
+                                Status status = hit.transform.GetComponent<Status>();
+                                status.Health -= shottyDamage;
+                                status.TakePushback(transform.forward * shottyPushback);
+                                status.HitStun = shottyHitStun;
+                                Instantiate(bloodFX, hit.point, transform.rotation);
+                            }
+                            if (hit.transform.gameObject.layer == 10)
+                            {
+                                Status status = hit.transform.GetComponent<Status>();
+                                status.Health -= shottyDamage;
+                                status.TakePushback(transform.forward * shottyPushback);
+                                status.HitStun = shottyHitStun;
+                                Instantiate(dustFX, hit.point, Quaternion.LookRotation(hit.normal, transform.up));
+                            }
+                        }
+                        else
+                        {
+                            Instantiate(dustFX, hit.point, Quaternion.LookRotation(hit.normal, transform.up));
+                        }
                     }
                 }
             }
@@ -148,7 +209,41 @@ public class Shooter : MonoBehaviour
         cooldown = shottyFireRate;
         GameObject gunFX = Instantiate(shottySFX, transform.position + transform.forward * 0.7f, transform.rotation);
         gunFX.transform.parent = gameObject.transform;
-        stingerHitBox.SetActive(true);
+
+        RaycastHit hit;
+        Ray ray = cam.ViewportPointToRay(new Vector3(0.5F, 0.5F, 0));
+
+        for (int i = 0; i < shottyBullets; i++)
+        {
+            Ray shottyRay = cam.ViewportPointToRay(new Vector3(Random.Range(0.5f - shottySpread, 0.5f + shottySpread), Random.Range(0.5f - shottySpread, 0.5f + shottySpread)));
+
+            if (Physics.Raycast(shottyRay, out hit, shottyRange, mask))
+            {
+                if (hit.collider && hit.transform.GetComponent<Status>() != null)
+                {
+                    if (hit.transform.gameObject.layer == 9)
+                    {
+                        Status status = hit.transform.GetComponent<Status>();
+                        status.Health -= shottyDamage;
+                        status.TakePushback(transform.forward * shottyPushback);
+                        status.HitStun = shottyHitStun;
+                        Instantiate(bloodFX, hit.point, transform.rotation);
+                    }
+                    if (hit.transform.gameObject.layer == 10)
+                    {
+                        Status status = hit.transform.GetComponent<Status>();
+                        status.Health -= shottyDamage;
+                        status.TakePushback(transform.forward * shottyPushback);
+                        status.HitStun = shottyHitStun;
+                        Instantiate(dustFX, hit.point, Quaternion.LookRotation(hit.normal, transform.up));
+                    }
+                }
+                else
+                {
+                    Instantiate(dustFX, hit.point, Quaternion.LookRotation(hit.normal, transform.up));
+                }
+            }
+        }
     }
     public void BackslideShoot()
     {
@@ -156,7 +251,42 @@ public class Shooter : MonoBehaviour
         cooldown = shottyFireRate;
         GameObject gunFX = Instantiate(shottySFX, transform.position + transform.forward * 0.7f, transform.rotation);
         gunFX.transform.parent = gameObject.transform;
-        backslideHitBox.SetActive(true);
+
+        RaycastHit hit;
+        Ray ray = cam.ViewportPointToRay(new Vector3(0.5F, 0.5F, 0));
+
+        for (int i = 0; i < shottyBullets; i++)
+        {
+            Ray shottyRay = cam.ViewportPointToRay(new Vector3(Random.Range(0.5f - shottySpread, 0.5f + shottySpread), Random.Range(0.5f - shottySpread, 0.5f + shottySpread)));
+            Ray shottyRayReverse = new Ray(transform.position, new Vector3(-shottyRay.direction.x, -shottyRay.direction.y, -shottyRay.direction.z));
+            if (Physics.Raycast(shottyRayReverse, out hit, shottyRange, mask))
+            {
+                if (hit.collider && hit.transform.GetComponent<Status>() != null)
+                {
+                    if (hit.transform.gameObject.layer == 9)
+                    {
+                        Status status = hit.transform.GetComponent<Status>();
+                        status.Health -= shottyDamage;
+                        status.TakePushback(transform.forward * shottyPushback);
+                        status.HitStun = shottyHitStun;
+                        Instantiate(bloodFX, hit.point, transform.rotation);
+                    }
+                    if (hit.transform.gameObject.layer == 10)
+                    {
+                        Status status = hit.transform.GetComponent<Status>();
+                        status.Health -= shottyDamage;
+                        status.TakePushback(transform.forward * shottyPushback);
+                        status.HitStun = shottyHitStun;
+                        Instantiate(dustFX, hit.point, Quaternion.LookRotation(hit.normal, transform.up));
+                    }
+                }
+                else
+                {
+                    Instantiate(dustFX, hit.point, Quaternion.LookRotation(hit.normal, transform.up));
+                }
+            }
+        }
+
     }
     public void HitboxDisable()
     {
