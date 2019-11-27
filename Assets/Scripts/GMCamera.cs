@@ -14,6 +14,7 @@ public class GMCamera : MonoBehaviour
     public float panRangeY;
     public float x, y;
     public float screenX, screenY;
+    public float wheelValue;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +27,7 @@ public class GMCamera : MonoBehaviour
     {
         x = Input.mousePosition.x;
         y = Input.mousePosition.y;
+        wheelValue = Input.mouseScrollDelta.y;
         screenX = Screen.width;
         screenY = Screen.height;
 
@@ -34,6 +36,8 @@ public class GMCamera : MonoBehaviour
 
         if (Input.mousePosition.y < panRangeY * Screen.height) upOffset -= panSpeed;
         else if (Input.mousePosition.y > Screen.height - (panRangeY * Screen.height)) upOffset += panSpeed;
+
+        offset += wheelValue;
 
     }
     // Update is called once per frame

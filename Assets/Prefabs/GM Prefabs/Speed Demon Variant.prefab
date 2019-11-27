@@ -31,11 +31,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Speed Demon Variant
       objectReference: {fileID: 0}
-    - target: {fileID: 6652609766816998485, guid: 009d160ef58ca3543ae8983f40a410d9,
-        type: 3}
-      propertyPath: m_Mass
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 6652609766816998484, guid: 009d160ef58ca3543ae8983f40a410d9,
         type: 3}
       propertyPath: range
@@ -143,6 +138,11 @@ PrefabInstance:
       propertyPath: health
       value: 25
       objectReference: {fileID: 0}
+    - target: {fileID: 9174738372452302702, guid: 009d160ef58ca3543ae8983f40a410d9,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c90e8c7159020444091a8fd9a06ebaf6, type: 2}
     - target: {fileID: 2065178359775370547, guid: 009d160ef58ca3543ae8983f40a410d9,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -158,6 +158,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hitbox
       objectReference: {fileID: 0}
+    - target: {fileID: 6652609766816998485, guid: 009d160ef58ca3543ae8983f40a410d9,
+        type: 3}
+      propertyPath: m_Mass
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6382294805880807793, guid: 009d160ef58ca3543ae8983f40a410d9,
         type: 3}
       propertyPath: m_Enabled
@@ -168,11 +173,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 89098ee59c1fde7458535cd572e9fff5, type: 2}
-    - target: {fileID: 9174738372452302702, guid: 009d160ef58ca3543ae8983f40a410d9,
+    - target: {fileID: 6352541990040711055, guid: 009d160ef58ca3543ae8983f40a410d9,
         type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: c90e8c7159020444091a8fd9a06ebaf6, type: 2}
+      propertyPath: damage
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 009d160ef58ca3543ae8983f40a410d9, type: 3}
 --- !u!1 &4218069879181996037 stripped
