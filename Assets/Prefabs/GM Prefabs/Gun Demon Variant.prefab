@@ -15,7 +15,7 @@ MonoBehaviour:
   isRanged: 1
   projectile: {fileID: 1944136812685012702, guid: 35bd4543d60b1ff4e889ff756c089c1f,
     type: 3}
-  shootOrigin: {fileID: 1437363100343403391}
+  shootOrigin: {fileID: 5157013611177803192}
   attackFX: {fileID: 3888371578901839607, guid: ff6460c103e4d2046bf693557157e0db,
     type: 3}
   mask:
@@ -127,9 +127,9 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 6665382461219072465}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &1437363100343403391 stripped
+--- !u!4 &5157013611177803192 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 5724840487214246574, guid: 009d160ef58ca3543ae8983f40a410d9,
+  m_CorrespondingSourceObject: {fileID: 1950435250526983273, guid: 009d160ef58ca3543ae8983f40a410d9,
     type: 3}
   m_PrefabInstance: {fileID: 6665382461219072465}
   m_PrefabAsset: {fileID: 0}
