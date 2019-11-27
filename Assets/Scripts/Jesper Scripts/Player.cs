@@ -47,7 +47,7 @@ public class Player : MonoBehaviour
     public int activeWeapon;
     public GameObject weaponSwitchFX;
     Animator anim;
-    Shooter shooter;
+    public Shooter shooter;
     bool axisInUse;
 
     // Start is called before the first frame update

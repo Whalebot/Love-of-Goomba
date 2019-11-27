@@ -26,7 +26,7 @@ public class Stinger : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Status status = other.transform.GetComponent<Status>();
-        status.Health -= stingerDamage;
+        //status.Health -= stingerDamage;
         status.TakePushback(transform.forward * stingerPushback);
         status.HitStun = stingerHitStun;
         Instantiate(bloodFX, other.transform.position, transform.rotation);

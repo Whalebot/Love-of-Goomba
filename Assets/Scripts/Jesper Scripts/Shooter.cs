@@ -39,7 +39,7 @@ public class Shooter : MonoBehaviour
     public float cooldown;
     public float gunCharge;
     public int maxCharge;
-    public int lvl;
+    public int lvl = 1;
     Animator anim;
     Camera cam;
     // Start is called before the first frame update
