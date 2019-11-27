@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
     public float lastIncome;
     public int GMMana;
     public static int mana;
+    public static int killCount;
+
     [SerializeField] TextMeshProUGUI moneyText;
     [SerializeField] TextMeshProUGUI incomeText;
     [SerializeField] TextMeshProUGUI manaText;

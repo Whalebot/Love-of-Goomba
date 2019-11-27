@@ -80,6 +80,7 @@ public class AI : MonoBehaviour
     void Death()
     {
         Instantiate(deathFX, transform.position, transform.rotation);
+        GameManager.killCount++;
         Destroy(gameObject);
     }
 
