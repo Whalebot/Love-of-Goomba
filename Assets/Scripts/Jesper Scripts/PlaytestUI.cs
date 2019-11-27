@@ -5,19 +5,25 @@ using UnityEngine.UI;
 
 public class PlaytestUI : MonoBehaviour
 {
-    Text text;
-    Status status;
+    public Text text;
+    public Status status;
+    public Shooter shooter;
+    public Slider hp;
 
     // Start is called before the first frame update
     void Start()
     {
-        text = GetComponent<Text>();
+        text = GetComponentInChildren<Text>();
         status = GameObject.FindGameObjectWithTag("Player").GetComponent<Status>();
+        shooter = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<Shooter>();
+        hp = GetComponentInChildren<Slider>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        text.text = status.health.ToString();
+        text.text = shooter.lvl.ToString();
+        if(hp != null)
+      hp.value = status.health;
     }
 }
