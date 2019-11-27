@@ -164,9 +164,9 @@ Light:
   serializedVersion: 9
   m_Type: 0
   m_Color: {r: 1, g: 0.9001908, b: 0.7877358, a: 1}
-  m_Intensity: 1.22
+  m_Intensity: 0.5
   m_Range: 115
-  m_SpotAngle: 124
+  m_SpotAngle: 81
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
@@ -1666,6 +1666,18 @@ PrefabInstance:
       value: 27.852938
       objectReference: {fileID: 0}
     - target: {fileID: 1870063256, guid: 2d0799bfa8e0b1449bc75a1f2e641520, type: 3}
+      propertyPath: gunFireRate
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1870063256, guid: 2d0799bfa8e0b1449bc75a1f2e641520, type: 3}
+      propertyPath: gunFireRatelvl2
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1870063256, guid: 2d0799bfa8e0b1449bc75a1f2e641520, type: 3}
+      propertyPath: gunFireRatelvl3
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1870063256, guid: 2d0799bfa8e0b1449bc75a1f2e641520, type: 3}
       propertyPath: gunDamage
       value: 3
       objectReference: {fileID: 0}
@@ -1696,6 +1708,14 @@ PrefabInstance:
     - target: {fileID: 1870063256, guid: 2d0799bfa8e0b1449bc75a1f2e641520, type: 3}
       propertyPath: shottyBullets
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1870063256, guid: 2d0799bfa8e0b1449bc75a1f2e641520, type: 3}
+      propertyPath: shottyBulletslvl2
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1870063256, guid: 2d0799bfa8e0b1449bc75a1f2e641520, type: 3}
+      propertyPath: shottyBulletslvl3
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1870063256, guid: 2d0799bfa8e0b1449bc75a1f2e641520, type: 3}
       propertyPath: shottySpread

@@ -6,6 +6,8 @@ public class Shooter : MonoBehaviour
 {
     Player player;
     public float gunFireRate;
+    public float gunFireRatelvl2;
+    public float gunFireRatelvl3;
     public int gunDamage;
     public int gunDamagelvl2;
     public int gunDamagelvl3;
@@ -19,6 +21,8 @@ public class Shooter : MonoBehaviour
     public float shottyPushback;
     public float shottyRange;
     public int shottyBullets;
+    public int shottyBulletslvl2;
+    public int shottyBulletslvl3;
     public float shottySpread;
     public LayerMask mask;
     public GameObject gunSFX;
@@ -35,6 +39,7 @@ public class Shooter : MonoBehaviour
     public float cooldown;
     public float gunCharge;
     public int maxCharge;
+    public int lvl;
     Animator anim;
     Camera cam;
     // Start is called before the first frame update
@@ -48,6 +53,21 @@ public class Shooter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if(GameManager.killCount == 10)
+        {
+            lvl = 2;
+            gunFireRate = gunFireRatelvl2;
+            shottyBullets = shottyBulletslvl2;
+        }
+        if(GameManager.killCount == 20)
+        {
+            lvl = 3;
+            gunFireRate = gunFireRatelvl3;
+            shottyBullets = shottyBulletslvl3;
+        }
+
+
 
         if(cooldown <= 0)
         {
