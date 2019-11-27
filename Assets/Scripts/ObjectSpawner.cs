@@ -88,15 +88,11 @@ public class ObjectSpawner : MonoBehaviour
                 Destroy(thisInstanceOfSpawnableGO);
                 Pay();
                 spawnedOnce = false;
-              //  cancelSpawning.gameObject.GetComponent<Button>().interactable = false;
-              //  cancelSpawningAnimator.SetBool("ShowCancelSpawningButton", false);
             }
             else if (Input.GetMouseButtonDown(0) && spawnedOnce && hit.collider == null)
             {
                 Destroy(thisInstanceOfSpawnableGO);
                 spawnedOnce = false;
-             //   cancelSpawning.gameObject.GetComponent<Button>().interactable = false;
-             //  cancelSpawningAnimator.SetBool("ShowCancelSpawningButton", false);
             }
 
             Debug.DrawRay(gameMasterCamera.transform.position, gameMasterCamera.ScreenPointToRay(Input.mousePosition).direction * 100, Color.white, 0f, true);
@@ -116,7 +112,7 @@ public class ObjectSpawner : MonoBehaviour
             {
                 foreach (MeshRenderer mr in spawnedGOCheckForPlacement.GetComponentsInChildren<MeshRenderer>())
                 {
-                    mr.GetComponent<MeshRenderer>().material.color = Color.yellow;
+                    mr.GetComponent<MeshRenderer>().material.color = Color.green;
                 }
                 placementIsValid = true;
             }

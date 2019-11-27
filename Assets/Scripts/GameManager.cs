@@ -15,7 +15,8 @@ public class GameManager : MonoBehaviour
     public static int income;
     public float incomeTimer;
     public float lastIncome;
-    public float mana;
+    public int GMMana;
+    public static int mana;
     [SerializeField] TextMeshProUGUI moneyText;
     [SerializeField] TextMeshProUGUI incomeText;
     [SerializeField] TextMeshProUGUI manaText;
@@ -27,6 +28,7 @@ public class GameManager : MonoBehaviour
     {
         money = GMMoney;
         income = GMIncome;
+        mana = GMMana;
         lastIncome = Time.time;
     }
 

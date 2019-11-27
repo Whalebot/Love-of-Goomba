@@ -4,11 +4,16 @@ using UnityEngine;
 
 public class Hitbox : MonoBehaviour
 {
+    public static float lastHitbox;
     [SerializeField] int damage;
     [SerializeField] int hitStun;
     [SerializeField] float pushback;
     [SerializeField] GameObject hitParticle;
     [SerializeField] LayerMask mask;
+    float hitboxDelay = 0.5F;
+    public enum TriggerVersion { Enter, Stay};
+    public TriggerVersion thisTrigger = TriggerVersion.Enter;
+
     Collider col;
     Rigidbody rb;
 
@@ -27,12 +32,31 @@ public class Hitbox : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player")) { DoDamage(other.gameObject);
-            Instantiate(hitParticle, other.transform.position, Quaternion.identity);
+        if (other.CompareTag("Player") && thisTrigger == TriggerVersion.Enter) {
+            if (Time.time > lastHitbox + hitboxDelay)
+            {
+                lastHitbox = Time.time;
+                DoDamage(other.gameObject);
+                Instantiate(hitParticle, other.transform.position, Quaternion.identity);
+            }
+
         }
 
     }
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("Player") && thisTrigger == TriggerVersion.Stay)
+        {
+            if (Time.time > lastHitbox + hitboxDelay)
+            {
+                lastHitbox = Time.time;
+                DoDamage(other.gameObject);
+                Instantiate(hitParticle, other.transform.position, Quaternion.identity);
+            }
 
+        }
+
+    }
 
     void DoDamage(GameObject other)
     {
