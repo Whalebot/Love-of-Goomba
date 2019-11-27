@@ -9,7 +9,7 @@ public class AI : MonoBehaviour
 
     NavMeshAgent agent;
     [HideInInspector] public Status status;
-
+    public bool hasArmor;
     [Space(10)]
     [HeaderAttribute("Field of View")]
     [SerializeField] public float range;
@@ -143,8 +143,12 @@ public class AI : MonoBehaviour
 
     void TransitionToHitstun()
     {
-        hitstunStart = true;
-        state = State.Hitstun;
+        if (!hasArmor)
+        {
+            hitstunStart = true;
+            state = State.Hitstun;
+        }
+
     }
 
     public bool TargetInRange()

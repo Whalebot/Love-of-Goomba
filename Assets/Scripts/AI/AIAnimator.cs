@@ -22,7 +22,7 @@ public class AIAnimator : MonoBehaviour
         anim.SetFloat("HitY", ai.status.knockbackDirection.y);
         anim.SetInteger("AttackID", ai.attackID);
 
-        if (ai.status.hitStunStart) HitstunStart();
+        if (ai.status.hitStunStart && !ai.hasArmor) HitstunStart();
         if (ai.attackStart) AttackStart();
     }
 

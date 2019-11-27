@@ -24,7 +24,7 @@ TagManager:
   - Ignore
   - GameMasterUI
   - PlayerUI
-  - 
+  - Blocker
   - 
   - 
   - 
@@ -44,4 +44,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Particle
+    uniqueID: 4082811935
     locked: 0

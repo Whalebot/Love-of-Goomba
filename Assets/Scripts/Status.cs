@@ -7,6 +7,8 @@ public class Status : MonoBehaviour
     public int health;
     public int hitStun;
     public bool inHitStun;
+    public bool hasArmor;
+    public bool autoDeath;
     [HideInInspector] public bool hitStunStart;
     [HideInInspector] public Rigidbody rb;
     [HideInInspector] public Vector2 knockbackDirection;
@@ -55,9 +57,13 @@ public class Status : MonoBehaviour
 
     public void TakePushback(Vector3 direction)
     {
-        rb.velocity = Vector3.zero;
-        rb.AddForce(direction, ForceMode.Impulse);
-        knockbackDirection = (direction - transform.position).normalized;
+        if (!hasArmor)
+        {
+            rb.velocity = Vector3.zero;
+            rb.AddForce(direction, ForceMode.Impulse);
+            knockbackDirection = (direction - transform.position).normalized;
+        }
+     
     }
 
     void ResolveHitStun()
@@ -73,5 +79,6 @@ public class Status : MonoBehaviour
     void Death()
     {
         isDead = true;
+        if (autoDeath) Destroy(gameObject);
     }
 }
