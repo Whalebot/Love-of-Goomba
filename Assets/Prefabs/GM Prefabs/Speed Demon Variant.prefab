@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60995b438134f094598d6e79c6c27d20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 16
+  force: 32
   attackDelay: 3
   hitbox: {fileID: 1083931055086952007}
   startupTime: 0
-  duration: 0.5
+  duration: 0.6
   attackFX: {fileID: 3888371578901839607, guid: ff6460c103e4d2046bf693557157e0db,
     type: 3}
 --- !u!1001 &7411598292963890267
@@ -31,6 +31,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Speed Demon Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 6652609766816998485, guid: 009d160ef58ca3543ae8983f40a410d9,
+        type: 3}
+      propertyPath: m_Mass
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6652609766816998484, guid: 009d160ef58ca3543ae8983f40a410d9,
         type: 3}
       propertyPath: range
@@ -39,7 +44,12 @@ PrefabInstance:
     - target: {fileID: 6652609766816998484, guid: 009d160ef58ca3543ae8983f40a410d9,
         type: 3}
       propertyPath: viewAngle
-      value: 60
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 6652609766816998484, guid: 009d160ef58ca3543ae8983f40a410d9,
+        type: 3}
+      propertyPath: rotationSpeed
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 6652609766816998484, guid: 009d160ef58ca3543ae8983f40a410d9,
         type: 3}
@@ -56,6 +66,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Speed
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6652609766816998491, guid: 009d160ef58ca3543ae8983f40a410d9,
+        type: 3}
+      propertyPath: m_Acceleration
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 6652609766816998491, guid: 009d160ef58ca3543ae8983f40a410d9,
+        type: 3}
+      propertyPath: m_AngularSpeed
+      value: 360
       objectReference: {fileID: 0}
     - target: {fileID: 6652609766816998490, guid: 009d160ef58ca3543ae8983f40a410d9,
         type: 3}
@@ -142,16 +162,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 89098ee59c1fde7458535cd572e9fff5, type: 2}
-    - target: {fileID: 1747456321713270144, guid: 009d160ef58ca3543ae8983f40a410d9,
+    - target: {fileID: 9174738372452302702, guid: 009d160ef58ca3543ae8983f40a410d9,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: c90e8c7159020444091a8fd9a06ebaf6, type: 2}
-    - target: {fileID: 3112226353685479849, guid: 009d160ef58ca3543ae8983f40a410d9,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 8b4118e0139a0dd45888794961e1da87, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 009d160ef58ca3543ae8983f40a410d9, type: 3}
 --- !u!1 &4218069879181996037 stripped
