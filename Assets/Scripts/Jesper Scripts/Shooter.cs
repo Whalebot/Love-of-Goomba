@@ -39,6 +39,7 @@ public class Shooter : MonoBehaviour
     public float cooldown;
     public float gunCharge;
     public int maxCharge;
+    public int lvl;
     Animator anim;
     Camera cam;
     // Start is called before the first frame update
@@ -53,18 +54,20 @@ public class Shooter : MonoBehaviour
     void Update()
     {
 
-        if(GameManager.killCount < 10)
+        if(GameManager.killCount == 10)
         {
-
+            lvl = 2;
+            gunFireRate = gunFireRatelvl2;
+            shottyBullets = shottyBulletslvl2;
         }
-        if(GameManager.killCount < 20)
+        if(GameManager.killCount == 20)
         {
-
+            lvl = 3;
+            gunFireRate = gunFireRatelvl3;
+            shottyBullets = shottyBulletslvl3;
         }
-        if(GameManager.killCount < 30)
-        {
 
-        }
+
 
         if(cooldown <= 0)
         {

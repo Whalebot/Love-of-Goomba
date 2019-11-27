@@ -51548,33 +51548,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8306471800454763320, guid: 81b0e7ff70acfdb4cbcf167ce3091777,
-        type: 3}
-      propertyPath: gunFireRate
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 8306471800454763320, guid: 81b0e7ff70acfdb4cbcf167ce3091777,
-        type: 3}
-      propertyPath: gunFireRatelvl2
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 8306471800454763320, guid: 81b0e7ff70acfdb4cbcf167ce3091777,
-        type: 3}
-      propertyPath: gunFireRatelvl3
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1930029589, guid: 81b0e7ff70acfdb4cbcf167ce3091777, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1930029591, guid: 81b0e7ff70acfdb4cbcf167ce3091777, type: 3}
-      propertyPath: m_SpotAngle
-      value: 81
-      objectReference: {fileID: 0}
-    - target: {fileID: 1930029591, guid: 81b0e7ff70acfdb4cbcf167ce3091777, type: 3}
-      propertyPath: m_Intensity
-      value: 0.5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 81b0e7ff70acfdb4cbcf167ce3091777, type: 3}
 --- !u!4 &2071248017 stripped
